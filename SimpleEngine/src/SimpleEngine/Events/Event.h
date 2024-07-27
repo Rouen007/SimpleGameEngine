@@ -45,11 +45,6 @@ namespace SE
 		{
 			return GetCategoryFlags() & category;
 		}
-		friend std::ostream& operator<<(std::ostream& ost, const Event& e)
-		{
-			ost << e.ToString();
-			return ost;
-		}
 
 	protected:
 		bool m_Handled = false;
@@ -76,15 +71,9 @@ namespace SE
 		Event& m_Event;
 
 	};
-	
-}
-namespace std
-{
-	std::ostream& operator<<(std::ostream& ost, const SE::Event& e)
+	inline std::ostream& operator<<(std::ostream& ost, const Event& e)
 	{
 		ost << e.ToString();
 		return ost;
 	}
-} // namespace std
-
-
+}
