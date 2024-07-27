@@ -25,13 +25,14 @@ project "SimpleEngine"
 
     includedirs
     {
-        "%{prj.name}/third_parties/spdlog/include"
+        "%{prj.name}/third_parties/spdlog/include",
+        "%{prj.name}/src",
     }
 
     filter "system:windows"
         cppdialect "c++17"
         staticruntime "On"
-        systemversion "10.0"
+        systemversion "latest"
 
         defines
         {
@@ -83,7 +84,7 @@ project "Sandbox"
     filter "system:windows"
         cppdialect "c++17"
         staticruntime "On"
-        systemversion "10.0"
+        systemversion "latest"
 
         defines
         {
