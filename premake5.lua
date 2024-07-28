@@ -10,7 +10,7 @@ workspace "SimpleEngine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
-IncludeDir = {}
+IncludeDir = {} 
 IncludeDir["GLFW"] = "EngineCore/third_parties/GLFW/include"
 
 include "EngineCore/third_parties/GLFW"
