@@ -4,7 +4,7 @@
 
 namespace SE
 {
-	class SIMPLEENGINE_API Application
+	class SENGINE_API Application
 	{
 	public:
 		Application();

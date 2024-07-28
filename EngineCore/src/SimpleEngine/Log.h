@@ -2,11 +2,10 @@
 #include "Core.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"
-#include <memory>
 
 namespace SE 
 {
-	class SIMPLEENGINE_API Log
+	class SENGINE_API Log
 	{
 	public:
 		Log();

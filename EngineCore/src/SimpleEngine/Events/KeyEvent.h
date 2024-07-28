@@ -2,11 +2,10 @@
 
 #include "Evnet.h"
 
-#include <sstream>
 
 namespace SE
 {
-	class SIMPLEENGINE_API KeyEvent : public Event
+	class SENGINE_API KeyEvent : public Event
 	{
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
@@ -19,7 +18,7 @@ namespace SE
 		int m_KeyCode;
 	};
 
-	class SIMPLEENGINE_API KeyPressedEvent : public KeyEvent
+	class SENGINE_API KeyPressedEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(int keyCode, int repeatedCount)
@@ -43,7 +42,7 @@ namespace SE
 		int m_RepeatedCount;
 	};
 
-	class SIMPLEENGINE_API KeyReleaseEvent : public KeyEvent
+	class SENGINE_API KeyReleaseEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(int keyCode)

@@ -1,9 +1,6 @@
 #pragma once
-
+#include "sepch.h"
 #include "SimpleEngine/Core.h"
-
-#include <string>
-#include <functional>
 
 namespace SE
 {
@@ -32,7 +29,7 @@ namespace SE
 
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
-	class SIMPLEENGINE_API Event
+	class SENGINE_API Event
 	{
 		friend class EventDispatcher;
 	public:

@@ -1,11 +1,10 @@
 #pragma once
 #include "Event.h"
 
-#include <sstream>
 
 namespace SE
 {
-	class SIMPLEENGINE_API WindowResizeEvent : public Event
+	class SENGINE_API WindowResizeEvent : public Event
 	{
 	public:
 		WindowResizeEvent(unsigned int width, unsigned int height)
@@ -32,7 +31,7 @@ namespace SE
 		unsigned int m_Width, m_Height;
 	};
 
-	class SIMPLEENGINE_API WindowCloseEvent : public Event
+	class SENGINE_API WindowCloseEvent : public Event
 	{
 	public:
 		WindowCloseEvent()
@@ -43,7 +42,7 @@ namespace SE
 		EVENT_CLASS_CATEGORY(EventCategoryApplication);
 	};
 
-	class SIMPLEENGINE_API AppTickEvent : public Event
+	class SENGINE_API AppTickEvent : public Event
 	{
 	public:
 		AppTickEvent()
@@ -54,7 +53,7 @@ namespace SE
 		EVENT_CLASS_CATEGORY(EventCategoryApplication);
 	};
 
-	class SIMPLEENGINE_API AppUpdateEvent : public Event
+	class SENGINE_API AppUpdateEvent : public Event
 	{
 	public:
 		AppUpdateEvent()
@@ -65,7 +64,7 @@ namespace SE
 		EVENT_CLASS_CATEGORY(EventCategoryApplication);
 	};
 
-	class SIMPLEENGINE_API AppRenderEvent : public Event
+	class SENGINE_API AppRenderEvent : public Event
 	{
 	public:
 		AppRenderEvent()

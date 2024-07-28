@@ -10,12 +10,16 @@ workspace "SimpleEngine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
-project "SimpleEngine"
-    location "SimpleEngine"
+project "EngineCore"
+    location "EngineCore"
     kind "SharedLib"
     language "C++"
+    
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+    pchheader "sepch.h"
+    pchsource "EngineCore/src/sepch.cpp"
 
     files
     {
@@ -72,13 +76,13 @@ project "Sandbox"
 
     includedirs
     {
-        "SimpleEngine/third_parties/spdlog/include",
-        "SimpleEngine/src"
+        "EngineCore/third_parties/spdlog/include",
+        "EngineCore/src"
     }
 
     links
     {
-        "SimpleEngine"
+        "EngineCore"
     }
 
     filter "system:windows"

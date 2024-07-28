@@ -1,7 +1,7 @@
+#include "sepch.h"
 #include "Application.h"
 #include "SimpleEngine/Events/ApplicationEvent.h"
 #include "SimpleEngine/Log.h"
-#include <iostream>
 
 namespace SE
 {
@@ -25,7 +25,7 @@ namespace SE
 		}
 		if (e.IsInCategory(EventCategoryInput))
 		{
-			SE_CLIENT_TRACE(e);
+			// SE_CLIENT_TRACE(e);
 		}
 		while (true)
 		{

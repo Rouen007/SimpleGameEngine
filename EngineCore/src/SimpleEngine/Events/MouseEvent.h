@@ -2,21 +2,13 @@
 
 #include "Event.h"
 
-#include <sstream>
-
-#pragma once
-
-#include "Evnet.h"
-
-#include <sstream>
-
 namespace SE
 {
 
-	class SIMPLEENGINE_API MouseMovedEvent : public Event
+	class SENGINE_API MouseMovedEvent : public Event
 	{
 	public:
-		KeyPressedEvent(int x, int y)
+		MouseMovedEvent(int x, int y)
 			: m_MouseX(x)
 			, m_MouseY(y)
 
@@ -39,7 +31,7 @@ namespace SE
 		float m_MouseX, m_MouseY;
 	};
 
-	class SIMPLEENGINE_API MouseScrolledEvent : public Event
+	class SENGINE_API MouseScrolledEvent : public Event
 	{
 	public:
 		KeyPressedEvent(int x, int y)
@@ -65,7 +57,7 @@ namespace SE
 		float m_XOffset, m_YOffset;
 	};
 
-	class SIMPLEENGINE_API MouseButtonEvent : public Event
+	class SENGINE_API MouseButtonEvent : public Event
 	{
 	public:
 
@@ -81,7 +73,7 @@ namespace SE
 		int m_Button;
 	};
 
-	class SIMPLEENGINE_API MouseButtonPressedEvent : public MouseButtonEvent
+	class SENGINE_API MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonPressedEvent(int button)
@@ -98,7 +90,7 @@ namespace SE
 		EVENT_CLASS_TYPE(MouseButtonPressed);
 	};
 
-	class SIMPLEENGINE_API MouseButtonReleaseEvent : public MouseButtonEvent
+	class SENGINE_API MouseButtonReleaseEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonReleaseEvent(int button)
