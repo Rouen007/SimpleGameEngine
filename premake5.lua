@@ -10,6 +10,11 @@ workspace "SimpleEngine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "EngineCore/third_parties/GLFW/include"
+
+include "EngineCore/third_parties/GLFW"
+
 project "EngineCore"
     location "EngineCore"
     kind "SharedLib"
@@ -31,7 +36,15 @@ project "EngineCore"
     {
         "%{prj.name}/third_parties/spdlog/include",
         "%{prj.name}/src",
+        "%{IncludeDir.GLFW}"
     }
+
+    links
+    {
+        "GLFW",
+        "opengl32.lib"
+    }
+
 
     filter "system:windows"
         cppdialect "c++17"

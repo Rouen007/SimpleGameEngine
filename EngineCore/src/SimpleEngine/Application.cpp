@@ -3,11 +3,13 @@
 #include "SimpleEngine/Events/ApplicationEvent.h"
 #include "SimpleEngine/Log.h"
 
+#include <GLFW/glfw3.h>
+
 namespace SE
 {
 	Application::Application()
 	{
-
+		m_Window = std::unique_ptr<Window>(Window::Create());;
 	}
 
 	Application::~Application()
@@ -27,9 +29,9 @@ namespace SE
 		{
 			// SE_CLIENT_TRACE(e);
 		}
-		while (true)
+		while (m_Running)
 		{
-
+			m_Window->OnUpdate();
 		}
 	}
 }

@@ -1,3 +1,6 @@
 [submodule "EngineCore/third_parties/spdlog"]
 	path = EngineCore/third_parties/spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule "EngineCore/third_parties/GLFW"]
+	path = EngineCore/third_parties/GLFW
+	url = https://github.com/Rouen007/glfw.git
