@@ -34,7 +34,7 @@ namespace SE
 	class SENGINE_API MouseScrolledEvent : public Event
 	{
 	public:
-		KeyPressedEvent(int x, int y)
+		MouseScrolledEvent(int x, int y)
 			: m_XOffset(x)
 			, m_YOffset(y)
 

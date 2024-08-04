@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Evnet.h"
+#include "Event.h"
 
 
 namespace SE
@@ -10,7 +10,7 @@ namespace SE
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
 
-		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategorInput)
+		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 	protected:
 		KeyEvent(int keyCode)
 			:m_KeyCode(keyCode)
@@ -22,7 +22,7 @@ namespace SE
 	{
 	public:
 		KeyPressedEvent(int keyCode, int repeatedCount)
-			: KeyCode(keyCode)
+			: KeyEvent(keyCode)
 			, m_RepeatedCount(repeatedCount)
 
 		{}
@@ -45,8 +45,8 @@ namespace SE
 	class SENGINE_API KeyReleaseEvent : public KeyEvent
 	{
 	public:
-		KeyPressedEvent(int keyCode)
-			: KeyCode(keyCode)
+		KeyReleaseEvent(int keyCode)
+			: KeyEvent(keyCode)
 		{}
 
 		std::string ToString() const override
