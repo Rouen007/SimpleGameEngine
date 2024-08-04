@@ -23,6 +23,14 @@ namespace SE
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 		SE_CORE_TRACE("{0}", e);
+
+		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
+		{
+			--it;
+			(*it)->OnEvent(e);
+			if (e.m_Handled)
+				break;
+		}
 	}
 
 	void Application::Run()
@@ -37,8 +45,15 @@ namespace SE
 		{
 			SE_CLIENT_TRACE(e);
 		}
+		
 		while (m_Running)
 		{
+			glClearColor(1, 0, 0, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+			for (auto layer : m_LayerStack)
+			{
+				layer->OnUpdate();
+			}
 			m_Window->OnUpdate();
 		}
 	}
@@ -46,5 +61,15 @@ namespace SE
 	{
 		m_Running = false;
 		return true;
+	}
+
+	void Application::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+	}
+
+	void Application::PushOverlay(Layer* overlay)
+	{
+		m_LayerStack.PushOverlay(overlay); 
 	}
 }

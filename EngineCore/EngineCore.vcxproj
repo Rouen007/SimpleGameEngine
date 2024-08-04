@@ -161,6 +161,8 @@
     <ClInclude Include="src\SimpleEngine\Events\Event.h" />
     <ClInclude Include="src\SimpleEngine\Events\KeyEvent.h" />
     <ClInclude Include="src\SimpleEngine\Events\MouseEvent.h" />
+    <ClInclude Include="src\SimpleEngine\Layer.h" />
+    <ClInclude Include="src\SimpleEngine\LayerStack.h" />
     <ClInclude Include="src\SimpleEngine\Log.h" />
     <ClInclude Include="src\SimpleEngine\Window.h" />
     <ClInclude Include="src\sepch.h" />
@@ -168,6 +170,8 @@
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\SimpleEngine\Application.cpp" />
+    <ClCompile Include="src\SimpleEngine\Layer.cpp" />
+    <ClCompile Include="src\SimpleEngine\LayerStack.cpp" />
     <ClCompile Include="src\SimpleEngine\Log.cpp" />
     <ClCompile Include="src\sepch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

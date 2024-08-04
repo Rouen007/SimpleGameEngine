@@ -44,6 +44,7 @@ namespace SE
 		}
 
 	protected:
+	public:
 		bool m_Handled = false;
 
 	};
