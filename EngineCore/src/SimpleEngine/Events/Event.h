@@ -73,4 +73,8 @@ namespace SE
 		ost << e.ToString();
 		return ost;
 	}
+	inline auto format_as(const Event& e)
+	{
+		return e.ToString();
+	}
 }

@@ -27,7 +27,7 @@ namespace SE
 		}
 		if (e.IsInCategory(EventCategoryInput))
 		{
-			// SE_CLIENT_TRACE(e);
+			SE_CLIENT_TRACE(e);
 		}
 		while (m_Running)
 		{
