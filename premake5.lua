@@ -48,7 +48,7 @@ project "EngineCore"
 
     filter "system:windows"
         cppdialect "c++17"
-        staticruntime "On"
+        staticruntime "Off"
         systemversion "latest"
 
         defines
@@ -64,14 +64,17 @@ project "EngineCore"
 
     filter "configurations:Debug"
         defines "SE_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
     
     filter "configurations:Release"
         defines "SE_RELEASE"
+        buildoptions "/MD"
         optimize "On"
 
     filter "configurations:Dist"
         defines "SE_DIST"
+        buildoptions "/MD"
         optimize "On"
 
 project "Sandbox"
@@ -100,7 +103,7 @@ project "Sandbox"
 
     filter "system:windows"
         cppdialect "c++17"
-        staticruntime "On"
+        staticruntime "Off"
         systemversion "latest"
 
         defines
@@ -110,12 +113,15 @@ project "Sandbox"
 
     filter "configurations:Debug"
         defines "SE_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
     
     filter "configurations:Release"
         defines "SE_RELEASE"
+        buildoptions "/MD"
         optimize "On"
 
     filter "configurations:Dist"
         defines "SE_DIST"
+        buildoptions "/MD"
         optimize "On"

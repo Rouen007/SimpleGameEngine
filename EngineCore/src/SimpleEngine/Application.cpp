@@ -28,7 +28,7 @@ namespace SE
 		{
 			--it;
 			(*it)->OnEvent(e);
-			if (e.m_Handled)
+			if (e.Handled)
 				break;
 		}
 	}
