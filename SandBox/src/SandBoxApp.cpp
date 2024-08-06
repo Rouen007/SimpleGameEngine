@@ -25,6 +25,7 @@ class Sandbox : public SE::Application
 public:
 	Sandbox() {
 		PushLayer(new ExampleLayer());
+		PushOverlay(new SE::ImGuiLayer());
 	}
 	~Sandbox() {}
 };
