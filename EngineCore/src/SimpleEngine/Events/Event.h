@@ -9,7 +9,7 @@ namespace SE
 		None=0, 
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
 		AppTick, AppUpdate, AppRender,
-		KeyPressed, KeyReleased,
+		KeyPressed, KeyReleased, KeyTyped,
 		MouseButtonPressed, MouseButtonRelease, MouseMoved, MouseScrolled
 	};
 
