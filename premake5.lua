@@ -23,6 +23,7 @@ project "EngineCore"
     location "EngineCore"
     kind "SharedLib"
     language "C++"
+    staticruntime "Off"
     
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -73,23 +74,24 @@ project "EngineCore"
 
     filter "configurations:Debug"
         defines "SE_DEBUG"
-        buildoptions "/MDd"
+        runtime "Debug"
         symbols "On"
     
     filter "configurations:Release"
         defines "SE_RELEASE"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
 
     filter "configurations:Dist"
         defines "SE_DIST"
-        buildoptions "/MD"
         optimize "On"
 
 project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
     language "C++"
+    staticruntime "Off"
+
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
@@ -122,15 +124,15 @@ project "Sandbox"
 
     filter "configurations:Debug"
         defines "SE_DEBUG"
-        buildoptions "/MDd"
+        runtime "Debug"
         symbols "On"
     
     filter "configurations:Release"
         defines "SE_RELEASE"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
 
     filter "configurations:Dist"
         defines "SE_DIST"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
