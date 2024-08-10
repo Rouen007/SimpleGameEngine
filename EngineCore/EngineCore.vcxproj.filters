@@ -27,6 +27,9 @@
     <ClInclude Include="src\Platform\OpenGL\imgui_render_loader.h">
       <Filter>Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
@@ -55,6 +58,9 @@
     <ClInclude Include="src\SimpleEngine\ImGui\ImGuiLayer.h">
       <Filter>SimpleEngine\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="src\SimpleEngine\Input.h">
+      <Filter>SimpleEngine</Filter>
+    </ClInclude>
     <ClInclude Include="src\SimpleEngine\Layer.h">
       <Filter>SimpleEngine</Filter>
     </ClInclude>
@@ -72,6 +78,9 @@
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\imgui_render.cpp">
       <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
