@@ -63,8 +63,8 @@ namespace SE
 			{
 				layer->OnUpdate();
 			}
-			auto [x, y] = Input::GetMousePosition();
-			SE_CORE_TRACE("{0}, {1}", x, y);
+			/*auto [x, y] = Input::GetMousePosition();
+			SE_CORE_TRACE("{0}, {1}", x, y);*/
 			m_Window->OnUpdate();
 		}
 	}

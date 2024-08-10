@@ -7,3 +7,6 @@
 [submodule "imgui"]
 	path = EngineCore/third_parties/imgui
 	url = https://github.com/Rouen007/imgui
+[submodule "EngineCore/third_parties/glm"]
+	path = EngineCore/third_parties/glm
+	url = https://github.com/g-truc/glm.git

@@ -14,6 +14,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "EngineCore/third_parties/GLFW/include"
 IncludeDir["GLAD"] = "EngineCore/third_parties/GLAD/include"
 IncludeDir["ImGui"] = "EngineCore/third_parties/imgui"
+IncludeDir["glm"] = "EngineCore/third_parties/glm"
 
 include "EngineCore/third_parties/GLFW"
 include "EngineCore/third_parties/GLAD"
@@ -35,6 +36,8 @@ project "EngineCore"
     {
         "%{prj.name}/src/**.h",
         "%{prj.name}/src/**.cpp",
+        "%{prj.name}/third_parties/glm/glm/**.hpp",
+        "%{prj.name}/third_parties/glm/glm/**.inl",
     }
 
     includedirs
@@ -43,7 +46,9 @@ project "EngineCore"
         "%{prj.name}/src",
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.GLAD}",
-        "%{IncludeDir.ImGui}"
+        "%{IncludeDir.ImGui}",
+        "%{IncludeDir.glm}"
+
     }
 
     links
@@ -104,7 +109,8 @@ project "Sandbox"
     includedirs
     {
         "EngineCore/third_parties/spdlog/include",
-        "EngineCore/src"
+        "EngineCore/src",
+        "%{IncludeDir.glm}"
     }
 
     links
