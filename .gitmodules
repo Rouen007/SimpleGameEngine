@@ -4,6 +4,9 @@
 [submodule "EngineCore/third_parties/GLFW"]
 	path = EngineCore/third_parties/GLFW
 	url = https://github.com/Rouen007/glfw.git
-[submodule "imgui"]
+[submodule "EngineCore/third_parties/glm"]
+	path = EngineCore/third_parties/glm
+	url = https://github.com/g-truc/glm.git
+[submodule "EngineCore/third_parties/imgui"]
 	path = EngineCore/third_parties/imgui
-	url = https://github.com/Rouen007/imgui
+	url = https://github.com/Rouen007/imgui.git
