@@ -1,5 +1,6 @@
 workspace "SimpleEngine"
     architecture "x64"
+    startproject "Sandbox"
 
     configurations
     {
@@ -69,7 +70,7 @@ project "EngineCore"
 
         postbuildcommands
         {
-            ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox\"")
+            ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
         }
 
     filter "configurations:Debug"
