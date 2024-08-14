@@ -12,20 +12,14 @@ namespace SE
 		ImGuiLayer();
 		~ImGuiLayer();
 
-		void OnAttach() override;
-		void OnDetach() override;
+		virtual void OnAttach() override;
+		virtual void OnDetach() override;
+		virtual void OnImGuiRender() override;
 
-		void OnUpdate() override;
-		void OnEvent(Event& event) override;
-	private:
-		bool OnMouseButtonPressedEvent(MouseButtonPressedEvent& e);
-		bool OnMouseButtonReleaseEvent(MouseButtonReleaseEvent& e);
-		bool OnMouseMovedEvent(MouseMovedEvent& e);
-		bool OnMouseScrolledEvent(MouseScrolledEvent& e);
-		bool OnKeyPressedEvent(KeyPressedEvent& e);
-		bool OnKeyReleaseEvent(KeyReleaseEvent& e);
-		bool OnKeyTypedEvent(KeyTypedEvent& e);
-		bool OnWindowResizeEvent(WindowResizeEvent& e);
+		void Begin();
+		void End();
+
+	
 	private:
 		float m_Time = 0;
 	};

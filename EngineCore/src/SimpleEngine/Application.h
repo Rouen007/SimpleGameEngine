@@ -4,6 +4,7 @@
 #include "LayerStack.h"
 #include "Events/Event.h"
 #include "SimpleEngine/Events/ApplicationEvent.h"
+#include "SimpleEngine/ImGui/ImGuiLayer.h"
 
 namespace SE
 {
@@ -24,6 +25,7 @@ namespace SE
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 

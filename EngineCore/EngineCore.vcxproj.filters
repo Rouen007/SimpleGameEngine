@@ -45,9 +45,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Platform\OpenGL\imgui_render.h">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\imgui_render_loader.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -1361,9 +1358,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Platform\OpenGL\imgui_render.cpp">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
@@ -1372,6 +1366,9 @@
     </ClCompile>
     <ClCompile Include="src\SimpleEngine\Application.cpp">
       <Filter>src\SimpleEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SimpleEngine\ImGui\ImGuiBuild.cpp">
+      <Filter>src\SimpleEngine\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\SimpleEngine\ImGui\ImGuiLayer.cpp">
       <Filter>src\SimpleEngine\ImGui</Filter>
