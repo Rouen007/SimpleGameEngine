@@ -111,6 +111,7 @@ project "Sandbox"
     {
         "EngineCore/third_parties/spdlog/include",
         "EngineCore/src",
+        "EngineCore/third_parties",
         "%{IncludeDir.glm}"
     }
 

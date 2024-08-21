@@ -6,6 +6,7 @@
 #include "SimpleEngine/Events/ApplicationEvent.h"
 #include "SimpleEngine/ImGui/ImGuiLayer.h"
 
+
 namespace SE
 {
 	class SENGINE_API Application
