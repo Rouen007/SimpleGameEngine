@@ -23,9 +23,11 @@ include "EngineCore/third_parties/imgui"
 
 project "EngineCore"
     location "EngineCore"
-    kind "SharedLib"
+    kind "StaticLib"
     language "C++"
-    staticruntime "Off"
+    cppdialect "c++17"
+    staticruntime "on"
+
     
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -62,41 +64,36 @@ project "EngineCore"
 
 
     filter "system:windows"
-        cppdialect "c++17"
-        staticruntime "Off"
         systemversion "latest"
 
         defines
         {
             "SE_BUILD_DLL",
             "SE_PLATFORM_WINDOWS",
-            "GLFW_INCLUDE_NONE"
-        }
-
-        postbuildcommands
-        {
-            ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
+            "GLFW_INCLUDE_NONE",
+            "_CRT_SECURE_NO_WARNINGS"
         }
 
     filter "configurations:Debug"
         defines "SE_DEBUG"
         runtime "Debug"
-        symbols "On"
+        symbols "on"
     
     filter "configurations:Release"
         defines "SE_RELEASE"
         runtime "Release"
-        optimize "On"
+        optimize "on"
 
     filter "configurations:Dist"
         defines "SE_DIST"
-        optimize "On"
+        optimize "on"
 
 project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
     language "C++"
-    staticruntime "Off"
+    cppdialect "c++17"
+    staticruntime "on"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -122,7 +119,7 @@ project "Sandbox"
 
     filter "system:windows"
         cppdialect "c++17"
-        staticruntime "Off"
+        staticruntime "on"
         systemversion "latest"
 
         defines
@@ -133,14 +130,14 @@ project "Sandbox"
     filter "configurations:Debug"
         defines "SE_DEBUG"
         runtime "Debug"
-        symbols "On"
+        symbols "on"
     
     filter "configurations:Release"
         defines "SE_RELEASE"
         runtime "Release"
-        optimize "On"
+        optimize "on"
 
     filter "configurations:Dist"
         defines "SE_DIST"
         runtime "Release"
-        optimize "On"
+        optimize "on"

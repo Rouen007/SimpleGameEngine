@@ -8,7 +8,7 @@ namespace SE
 	class SENGINE_API MouseMovedEvent : public Event
 	{
 	public:
-		MouseMovedEvent(int x, int y)
+		MouseMovedEvent(float x, float y)
 			: m_MouseX(x)
 			, m_MouseY(y)
 
@@ -34,7 +34,7 @@ namespace SE
 	class SENGINE_API MouseScrolledEvent : public Event
 	{
 	public:
-		MouseScrolledEvent(int x, int y)
+		MouseScrolledEvent(float x, float y)
 			: m_XOffset(x)
 			, m_YOffset(y)
 
