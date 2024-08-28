@@ -1,5 +1,6 @@
 #pragma once
 #include "SimpleEngine/Window.h"
+#include "SimpleEngine/Renderer/GraphicsContexture.h"
 #include <GLFW/glfw3.h>
 
 namespace SE
@@ -39,6 +40,8 @@ namespace SE
 		};
 
 		WindowData m_Data;
+
+		GraphicsContext* m_Context;
 
 	};
 }

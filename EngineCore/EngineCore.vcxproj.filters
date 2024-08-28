@@ -22,6 +22,9 @@
     <Filter Include="src\SimpleEngine\ImGui">
       <UniqueIdentifier>{E66046F0-D25A-6F42-BBC7-0553A760D5AE}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\SimpleEngine\Renderer">
+      <UniqueIdentifier>{E265ECC7-4E28-2052-97D8-AEDE03DAF82F}</UniqueIdentifier>
+    </Filter>
     <Filter Include="third_parties">
       <UniqueIdentifier>{37FABD8B-A3BA-39C2-6CF5-823FD8747E9E}</UniqueIdentifier>
     </Filter>
@@ -45,6 +48,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\imgui_render_loader.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -101,6 +107,9 @@
     </ClInclude>
     <ClInclude Include="src\SimpleEngine\MouseButtonCodes.h">
       <Filter>src\SimpleEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SimpleEngine\Renderer\GraphicsContexture.h">
+      <Filter>src\SimpleEngine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\SimpleEngine\Window.h">
       <Filter>src\SimpleEngine</Filter>
@@ -1358,6 +1367,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
