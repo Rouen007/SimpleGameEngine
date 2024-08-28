@@ -37,6 +37,12 @@ namespace SE
 			bool VSync;
 
 			EventCallbackFn EventCallback;
+			WindowData()
+				: Title("")
+				, Width(0)
+				, Height(0)
+				, VSync(false)
+			{}
 		};
 
 		WindowData m_Data;
