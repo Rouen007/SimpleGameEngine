@@ -1,22 +1,23 @@
 #include "sepch.h"
 #include "Shader.h"
 #include "GLAD/glad.h"
+#include "SimpleEngine/Log.h"
 
 // https://www.khronos.org/opengl/wiki/Shader_Compilation
 
 namespace SE {
-	Shader::Shader(const std::string& vertexSrc, const std::string& fragmentSrc)
+	Shader::Shader(const std::string& vertexSource, const std::string& fragmentSource)
 	{
 		// Read our shaders into the appropriate buffers
-		std::string& vertexSource = vertexSrc;// Get source code for vertex shader.
-		std::string& fragmentSource = fragmentSrc;// Get source code for fragment shader.
+		// std::string& vertexSource = // Get source code for vertex shader.
+		// std::string& fragmentSource = // Get source code for fragment shader.
 
 		// Create an empty vertex shader handle
 		GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 
 		// Send the vertex shader source code to GL
 		// Note that std::string's .c_str is NULL character terminated.
-		const GLchar* source = (const GLchar*)vertexSource.c_str();
+		const GLchar* source = vertexSource.c_str();
 		glShaderSource(vertexShader, 1, &source, 0);
 
 		// Compile the vertex shader
@@ -37,7 +38,8 @@ namespace SE {
 			glDeleteShader(vertexShader);
 
 			// Use the infoLog as you see fit.
-
+			SE_CORE_ERROR("{0}", infoLog.data());
+			SE_CORE_ASSERT(false, "Vertex shader compilation failure!");
 			// In this simple program, we'll just leave
 			return;
 		}
@@ -71,6 +73,9 @@ namespace SE {
 			// Use the infoLog as you see fit.
 
 			// In this simple program, we'll just leave
+			SE_CORE_ERROR("{0}", infoLog.data());
+			SE_CORE_ASSERT(false, "Fragment shader compilation failure!");
+
 			return;
 		}
 
@@ -78,6 +83,7 @@ namespace SE {
 		// Now time to link them together into a program.
 		// Get a program object.
 		GLuint program = glCreateProgram();
+		m_RendererID = program;
 
 		// Attach our shaders to our program
 		glAttachShader(program, vertexShader);
@@ -105,7 +111,8 @@ namespace SE {
 			glDeleteShader(fragmentShader);
 
 			// Use the infoLog as you see fit.
-
+			SE_CORE_ERROR("{0}", infoLog.data());
+			SE_CORE_ASSERT(false, "Shader link failure!");
 			// In this simple program, we'll just leave
 			return;
 		}
@@ -117,14 +124,14 @@ namespace SE {
 
 	Shader::~Shader()
 	{
-
+		glDeleteProgram(m_RendererID);
 	}
 	void Shader::Bind() const
 	{
-
+		glUseProgram(m_RendererID);
 	}
 	void Shader::Unbind() const 
 	{
-
+		glUseProgram(0);
 	}
 }

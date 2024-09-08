@@ -48,6 +48,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -108,7 +111,16 @@
     <ClInclude Include="src\SimpleEngine\MouseButtonCodes.h">
       <Filter>src\SimpleEngine</Filter>
     </ClInclude>
+    <ClInclude Include="src\SimpleEngine\Renderer\Buffer.h">
+      <Filter>src\SimpleEngine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\SimpleEngine\Renderer\GraphicsContexture.h">
+      <Filter>src\SimpleEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SimpleEngine\Renderer\Renderer.h">
+      <Filter>src\SimpleEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SimpleEngine\Renderer\Shader.h">
       <Filter>src\SimpleEngine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\SimpleEngine\Window.h">
@@ -1367,6 +1379,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
@@ -1393,6 +1408,15 @@
     </ClCompile>
     <ClCompile Include="src\SimpleEngine\Log.cpp">
       <Filter>src\SimpleEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SimpleEngine\Renderer\Buffer.cpp">
+      <Filter>src\SimpleEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SimpleEngine\Renderer\Renderer.cpp">
+      <Filter>src\SimpleEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SimpleEngine\Renderer\Shader.cpp">
+      <Filter>src\SimpleEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\sepch.cpp">
       <Filter>src</Filter>
