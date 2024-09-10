@@ -28,8 +28,8 @@ namespace SE
 	void OpenGLVertexBuffer::Unbind() const
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
-
 	}
+
 
 	/// <indexbuffer>
 	/// /////////////////////////////////////
