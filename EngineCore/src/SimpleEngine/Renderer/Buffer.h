@@ -88,7 +88,7 @@ namespace SE
 		std::vector<BufferElement>::const_iterator begin() const { return m_Elements.begin(); }
 		std::vector<BufferElement>::const_iterator end() const { return m_Elements.end(); }
 
-		inline const std::vector<BufferElement>& GetElement() const { return m_Elements; }
+		inline const std::vector<BufferElement>& GetElements() const { return m_Elements; }
 		inline uint32_t GetStride() const { return m_Stride; }
 	private:
 		void CalculateOffsetsAndStride()
