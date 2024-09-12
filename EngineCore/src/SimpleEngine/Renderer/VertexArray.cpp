@@ -12,8 +12,8 @@ namespace SE
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None: SE_CORE_ASSERT(false, "RendererAPI::None is not supported!"); return nullptr;
-			case RendererAPI::OpenGL: return new OpenGLVertexArray();
+			case RendererAPI::API::None: SE_CORE_ASSERT(false, "RendererAPI::None is not supported!"); return nullptr;
+			case RendererAPI::API::OpenGL: return new OpenGLVertexArray();
 		}
 		return nullptr;
 	}

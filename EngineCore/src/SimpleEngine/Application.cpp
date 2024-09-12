@@ -5,6 +5,7 @@
 #include <glad/glad.h>
 #include "Input.h"
 #include "SimpleEngine/Renderer/Buffer.h"
+#include "SimpleEngine/Renderer/Renderer.h"
 
 namespace SE
 {
@@ -194,18 +195,26 @@ namespace SE
 		
 		while (m_Running)
 		{
-			glClearColor(0.1f, 0.1f, 0.1f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			//glClearColor(0.1f, 0.1f, 0.1f, 1);
+			//glClear(GL_COLOR_BUFFER_BIT);
 
-			m_SquareVA->Bind();
+			RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+			RenderCommand::Clear();
+
+			Renderer::BeginScene();
+			//m_SquareVA->Bind();
 			m_BlueShader->Bind();
 
-			glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(m_SquareVA);
+			//glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
 
-			m_VertexArray->Bind();
+			//m_VertexArray->Bind();
 			m_Shader->Bind();
+			Renderer::Submit(m_VertexArray);
 
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::EndScene();
+
+			//glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
 
 
 			for (auto layer : m_LayerStack)
