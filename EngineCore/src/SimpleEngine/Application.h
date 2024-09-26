@@ -8,6 +8,8 @@
 #include "SimpleEngine/Renderer/Shader.h"
 #include "SimpleEngine/Renderer/Buffer.h"
 #include "SimpleEngine/Renderer/VertexArray.h"
+#include "SimpleEngine/Renderer/OrthographicCamera.h"
+
 
 
 namespace SE
@@ -37,6 +39,8 @@ namespace SE
 
 		std::shared_ptr<Shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
 
 
 		static Application* s_Instance;

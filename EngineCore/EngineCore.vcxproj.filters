@@ -123,6 +123,9 @@
     <ClInclude Include="src\SimpleEngine\Renderer\GraphicsContexture.h">
       <Filter>src\SimpleEngine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\SimpleEngine\Renderer\OrthographicCamera.h">
+      <Filter>src\SimpleEngine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\SimpleEngine\Renderer\RenderCommand.h">
       <Filter>src\SimpleEngine\Renderer</Filter>
     </ClInclude>
@@ -1431,6 +1434,9 @@
       <Filter>src\SimpleEngine</Filter>
     </ClCompile>
     <ClCompile Include="src\SimpleEngine\Renderer\Buffer.cpp">
+      <Filter>src\SimpleEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SimpleEngine\Renderer\OrthographicCamera.cpp">
       <Filter>src\SimpleEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\SimpleEngine\Renderer\RenderCommand.cpp">
