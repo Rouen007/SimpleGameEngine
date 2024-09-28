@@ -5,16 +5,12 @@
 #include "Events/Event.h"
 #include "SimpleEngine/Events/ApplicationEvent.h"
 #include "SimpleEngine/ImGui/ImGuiLayer.h"
-#include "SimpleEngine/Renderer/Shader.h"
-#include "SimpleEngine/Renderer/Buffer.h"
-#include "SimpleEngine/Renderer/VertexArray.h"
-#include "SimpleEngine/Renderer/OrthographicCamera.h"
 
 
 
 namespace SE
 {
-	class SENGINE_API Application
+	class Application
 	{
 	public:
 		Application(); 
@@ -34,13 +30,7 @@ namespace SE
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<Shader> m_BlueShader;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
-		OrthographicCamera m_Camera;
+		
 
 
 		static Application* s_Instance;

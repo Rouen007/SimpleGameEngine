@@ -37,7 +37,6 @@ namespace SE
 	}
 
 	Application::Application()
-		: m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
 	{
 		SE_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
@@ -46,125 +45,6 @@ namespace SE
 		m_ImGuiLayer =  new ImGuiLayer();
 
 		PushOverlay(m_ImGuiLayer);
-
-		m_VertexArray.reset(VertexArray::Create());
-		
-
-		float vertices[3 * 7] = {
-			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.9f, 1.0f,
-			 0.5f, -0.5f, 0.0f, 0.0f, 0.2f, 0.9f, 1.0f,
-			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.0f, 1.0f,
-		};
-
-		std::shared_ptr<VertexBuffer> vb;
-		vb.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
-
-		vb->SetLayout({
-			{ShaderDataType::Float3, "a_Position"},
-			{ShaderDataType::Float4, "a_Color"},
-			});
-		m_VertexArray->AddVertexBuffer(vb);
-		
-		std::shared_ptr<IndexBuffer> ib;
-		unsigned int indices[3] = { 0, 1, 2 };
-		ib.reset(IndexBuffer::Create(indices, sizeof(indices)/sizeof(uint32_t)));
-
-		m_VertexArray->SetIndexBuffer(ib);
-
-
-		float squarevertices[3 * 4] = {
-			-0.5f, -0.5f, 0.0f, 
-			 0.5f, -0.5f, 0.0f, 
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f,
-		};
-
-		m_SquareVA.reset(VertexArray::Create());
-		std::shared_ptr<VertexBuffer> sqVb;
-		sqVb.reset(VertexBuffer::Create(squarevertices, sizeof(squarevertices)));
-
-		sqVb->SetLayout({
-			{ShaderDataType::Float3, "a_Position"},
-			});
-		m_SquareVA->AddVertexBuffer(sqVb);
-
-		unsigned int squareindices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr< IndexBuffer> sqIb;
-		sqIb.reset(IndexBuffer::Create(squareindices, sizeof(squareindices) / sizeof(uint32_t)));
-
-		m_SquareVA->SetIndexBuffer(sqIb);
-
-		std::string vertexSrc = R"(
-		#version 330 core
-		
-		layout(location=0)	in vec3 a_Position;
-		layout(location=1)	in vec4 a_Color;
-
-		uniform mat4 u_ViewProjection;
-		
-		out vec3 v_Position;
-		out vec4 v_Color;
-
-		void main()
-		{
-			v_Position = a_Position;
-			v_Color = a_Color;
-			gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
-		}
-
-)";		
-		std::string fragmentSrc = R"(
-		#version 330 core
-		
-		layout(location=0)	out vec4 color;
-
-
-
-		in vec3 v_Position;
-		in vec4 v_Color;
-
-		void main()
-		{
-			color = v_Color;
-		}
-
-)";
-
-		m_Shader.reset(new Shader(vertexSrc, fragmentSrc));
-
-
-		std::string blueVertexSrc = R"(
-		#version 330 core
-		
-		layout(location=0)	in vec3 a_Position;
-
-		uniform mat4 u_ViewProjection;
-
-		
-		out vec3 v_Position;
-
-		void main()
-		{
-			v_Position = a_Position;
-			gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
-		}
-
-)";		
-		std::string blueFragmentSrc = R"(
-		#version 330 core
-		
-		layout(location=0)	out vec4 color;
-
-		in vec3 v_Position;
-
-		void main()
-		{
-			color = vec4(0.2f, 0.2f, 0.8f, 1.0f);
-		}
-
-)";
-
-		m_BlueShader.reset(new Shader(blueVertexSrc, blueFragmentSrc));
 
 	}
 
@@ -206,26 +86,7 @@ namespace SE
 			//glClearColor(0.1f, 0.1f, 0.1f, 1);
 			//glClear(GL_COLOR_BUFFER_BIT);
 
-			RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
-			RenderCommand::Clear();
-
-			m_Camera.SetPosition({ 0.f, 0.f, 0.0f });
-			m_Camera.SetRotation(45.f);
-
-			Renderer::BeginScene(m_Camera);
-			//m_SquareVA->Bind();
-			/*m_BlueShader->Bind();
-			m_BlueShader->UploadUniformMat4("u_ViewProjection", m_Camera.GetViewProjectionMatrix());*/
-
-			Renderer::Submit(m_BlueShader, m_SquareVA);
-			//glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
-
-			//m_VertexArray->Bind();
-			/*m_Shader->Bind();
-			m_Shader->UploadUniformMat4("u_ViewProjection", m_Camera.GetViewProjectionMatrix());*/
-			Renderer::Submit(m_Shader, m_VertexArray);
-
-			Renderer::EndScene();
+			
 
 			//glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
 
