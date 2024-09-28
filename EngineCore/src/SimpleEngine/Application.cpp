@@ -6,6 +6,8 @@
 #include "Input.h"
 // #include "SimpleEngine/Renderer/Buffer.h"
 #include "SimpleEngine/Renderer/Renderer.h"
+#include <GLFW/glfw3.h>
+
 
 namespace SE
 {
@@ -83,17 +85,13 @@ namespace SE
 		
 		while (m_Running)
 		{
-			//glClearColor(0.1f, 0.1f, 0.1f, 1);
-			//glClear(GL_COLOR_BUFFER_BIT);
-
-			
-
-			//glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
-
+			float time = (float) glfwGetTime();
+			Timestep timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
 
 			for (auto layer : m_LayerStack)
 			{
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 			}
 
 			m_ImGuiLayer->Begin();

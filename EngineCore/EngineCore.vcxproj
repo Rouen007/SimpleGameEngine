@@ -153,6 +153,7 @@
     <ClInclude Include="src\SimpleEngine.h" />
     <ClInclude Include="src\SimpleEngine\Application.h" />
     <ClInclude Include="src\SimpleEngine\Core.h" />
+    <ClInclude Include="src\SimpleEngine\Core\Timestep.h" />
     <ClInclude Include="src\SimpleEngine\EntryPoint.h" />
     <ClInclude Include="src\SimpleEngine\Events\ApplicationEvent.h" />
     <ClInclude Include="src\SimpleEngine\Events\Event.h" />

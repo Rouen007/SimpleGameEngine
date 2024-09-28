@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SimpleEngine/Core.h"
+#include "SimpleEngine/Core/Timestep.h"
 #include "SimpleEngine/Events/Event.h"
 
 namespace SE
@@ -13,7 +14,7 @@ namespace SE
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

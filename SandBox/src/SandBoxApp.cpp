@@ -132,25 +132,26 @@ public:
 		m_BlueShader.reset(new SE::Shader(blueVertexSrc, blueFragmentSrc));
 	}
 
-	void OnUpdate() override
+	void OnUpdate(SE::Timestep ts) override
 	{
+		SE_CLIENT_INFO("Delta time : {0} ms", ts.GetMilliseconds());
 
 		if (SE::Input::IsKeyPressed(SE_KEY_LEFT))
 		{
-			m_CameraPosition.x += m_CameraMoveSpeed;
+			m_CameraPosition.x += m_CameraMoveSpeed * ts;
 		}
 		else if (SE::Input::IsKeyPressed(SE_KEY_RIGHT))
 		{
-			m_CameraPosition.x -= m_CameraMoveSpeed;
+			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
 		}
 
 		if (SE::Input::IsKeyPressed(SE_KEY_DOWN))
 		{
-			m_CameraPosition.y += m_CameraMoveSpeed;
+			m_CameraPosition.y += m_CameraMoveSpeed * ts;
 		}
 		else if (SE::Input::IsKeyPressed(SE_KEY_UP))
 		{
-			m_CameraPosition.y -= m_CameraMoveSpeed;
+			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
 		}
 
 		if (SE::Input::IsKeyPressed(SE_KEY_A))

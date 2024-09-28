@@ -16,6 +16,9 @@
     <Filter Include="src\SimpleEngine">
       <UniqueIdentifier>{BCCE1660-A8C7-35B2-D1F9-1A37BD5115BE}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\SimpleEngine\Core">
+      <UniqueIdentifier>{94888A1E-00F5-4519-C9E8-DD7635146881}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\SimpleEngine\Events">
       <UniqueIdentifier>{200F71F0-8C46-B987-9550-1DAB0107E080}</UniqueIdentifier>
     </Filter>
@@ -77,6 +80,9 @@
     </ClInclude>
     <ClInclude Include="src\SimpleEngine\Core.h">
       <Filter>src\SimpleEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SimpleEngine\Core\Timestep.h">
+      <Filter>src\SimpleEngine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\SimpleEngine\EntryPoint.h">
       <Filter>src\SimpleEngine</Filter>
