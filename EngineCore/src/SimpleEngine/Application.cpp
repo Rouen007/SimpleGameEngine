@@ -37,7 +37,7 @@ namespace SE
 	}
 
 	Application::Application()
-		: m_Camera(-1.0f, 1.0f, -1.0f, 1.0f)
+		: m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
 	{
 		SE_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
