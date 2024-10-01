@@ -18,6 +18,7 @@
 
 #include "SimpleEngine/Renderer/Buffer.h"
 #include "SimpleEngine/Renderer/Shader.h"
+#include "SimpleEngine/Renderer/Texture.h"
 #include "SimpleEngine/Renderer/VertexArray.h"
 
 #include "SimpleEngine/Renderer/OrthographicCamera.h"

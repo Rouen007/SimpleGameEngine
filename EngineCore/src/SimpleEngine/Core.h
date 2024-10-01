@@ -1,5 +1,5 @@
 #pragma once
-
+#include <memory>
 
 #ifdef SE_PLATFORM_WINDOWS
 #if SE_DYNAMIC_LINK
@@ -31,4 +31,13 @@
 #define BIT(x) (1 << x)
 
 #define BIND_EVENT_FN_X(x) std::bind(&x, this, std::placeholders::_1)
+
+namespace SE
+{
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+}
 

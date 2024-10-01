@@ -24,7 +24,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.0f, 1.0f,
 		};
 
-		std::shared_ptr<SE::VertexBuffer> vb;
+		SE::Ref<SE::VertexBuffer> vb;
 		vb.reset(SE::VertexBuffer::Create(vertices, sizeof(vertices)));
 
 		vb->SetLayout({
@@ -33,31 +33,32 @@ public:
 			});
 		m_VertexArray->AddVertexBuffer(vb);
 
-		std::shared_ptr<SE::IndexBuffer> ib;
+		SE::Ref<SE::IndexBuffer> ib;
 		unsigned int indices[3] = { 0, 1, 2 };
 		ib.reset(SE::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 
 		m_VertexArray->SetIndexBuffer(ib);
 
 
-		float squarevertices[3 * 4] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f,
+		float squarevertices[5 * 4] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
 		};
 
 		m_SquareVA.reset(SE::VertexArray::Create());
-		std::shared_ptr<SE::VertexBuffer> sqVb;
+		SE::Ref<SE::VertexBuffer> sqVb;
 		sqVb.reset(SE::VertexBuffer::Create(squarevertices, sizeof(squarevertices)));
 
 		sqVb->SetLayout({
 			{SE::ShaderDataType::Float3, "a_Position"},
+			{SE::ShaderDataType::Float2, "a_TexCoord"},
 			});
 		m_SquareVA->AddVertexBuffer(sqVb);
 
 		unsigned int squareindices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<SE::IndexBuffer> sqIb;
+		SE::Ref<SE::IndexBuffer> sqIb;
 		sqIb.reset(SE::IndexBuffer::Create(squareindices, sizeof(squareindices) / sizeof(uint32_t)));
 
 		m_SquareVA->SetIndexBuffer(sqIb);
@@ -120,6 +121,7 @@ public:
 		}
 
 )";
+
 		std::string flatColorFragmentSrc = R"(
 		#version 330 core
 		
@@ -136,6 +138,51 @@ public:
 )";
 
 		m_FlatColorShader.reset(SE::Shader::Create(flatColorVertexSrc, flatColorFragmentSrc));
+
+		std::string textureVertexSrc = R"(
+		#version 330 core
+		
+		layout(location=0)	in vec3 a_Position;
+		layout(location=1)	in vec2 a_TexCoord;
+
+		uniform mat4 u_ViewProjection;
+		uniform mat4 u_Transform;
+
+		
+		out vec3 v_Position;
+		out vec2 v_TexCoord;
+
+		void main()
+		{
+			v_Position = a_Position;
+			v_TexCoord = a_TexCoord;
+			gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
+		}
+
+)";
+		std::string textureFragmentSrc = R"(
+		#version 330 core
+		
+		layout(location=0)	out vec4 color;
+
+		in vec3 v_Position;
+		in vec2 v_TexCoord;
+		uniform vec3 u_Color;
+		uniform sampler2D u_Texture;
+
+		void main()
+		{
+			color = texture(u_Texture, v_TexCoord);
+		}
+
+)";
+		
+
+		m_Texture = SE::Texture2D::Create("assets/textures/qiya2.jfif");
+		m_TextureShader.reset(SE::Shader::Create(textureVertexSrc, textureFragmentSrc));
+
+		std::dynamic_pointer_cast<SE::OpenGLShader>(m_TextureShader)->Bind();
+		std::dynamic_pointer_cast<SE::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0); // slot=0
 	}
 
 	void OnUpdate(SE::Timestep ts) override
@@ -193,7 +240,10 @@ public:
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
 				SE::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
-		SE::Renderer::Submit(m_Shader, m_VertexArray);
+		//SE::Renderer::Submit(m_Shader, m_VertexArray);
+
+		m_Texture->Bind();
+		SE::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		SE::Renderer::EndScene();
 	}
@@ -222,11 +272,12 @@ public:
 	}
 
 private:
-	std::shared_ptr<SE::Shader> m_Shader;
-	std::shared_ptr<SE::VertexArray> m_VertexArray;
+	SE::Ref<SE::Shader> m_Shader;
+	SE::Ref<SE::VertexArray> m_VertexArray;
+	SE::Ref<SE::Shader> m_FlatColorShader, m_TextureShader;
+	SE::Ref<SE::VertexArray> m_SquareVA;
 
-	std::shared_ptr<SE::Shader> m_FlatColorShader;
-	std::shared_ptr<SE::VertexArray> m_SquareVA;
+	SE::Ref<SE::Texture2D> m_Texture;
 
 	SE::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
