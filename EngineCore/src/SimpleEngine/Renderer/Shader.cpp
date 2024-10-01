@@ -15,4 +15,14 @@ namespace SE {
 		}
 		return nullptr;
 	}
+
+	Shader* Shader::Create(const std::string& filepath)
+	{
+		switch (Renderer::GetAPI())
+		{
+		case RendererAPI::API::None: SE_CORE_ASSERT(false, "RendererAPI::None is not supported!"); return nullptr;
+		case RendererAPI::API::OpenGL: return new OpenGLShader(filepath);
+		}
+		return nullptr;
+	}
 }
