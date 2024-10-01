@@ -10,6 +10,7 @@ namespace SE
 	class Renderer
 	{
 	public:
+		static void Init();
 		static void BeginScene(OrthographicCamera& cam);
 		static void EndScene();
 

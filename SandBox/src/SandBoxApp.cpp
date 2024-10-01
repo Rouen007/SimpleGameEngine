@@ -179,6 +179,7 @@ public:
 		
 
 		m_Texture = SE::Texture2D::Create("assets/textures/qiya2.jfif");
+		m_LogoTexture = SE::Texture2D::Create("assets/textures/qiya4.png");
 		m_TextureShader.reset(SE::Shader::Create(textureVertexSrc, textureFragmentSrc));
 
 		std::dynamic_pointer_cast<SE::OpenGLShader>(m_TextureShader)->Bind();
@@ -245,6 +246,9 @@ public:
 		m_Texture->Bind();
 		SE::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
+		m_LogoTexture->Bind();
+		SE::Renderer::Submit(m_TextureShader, m_SquareVA, glm::translate(glm::mat4(1.0f), {1.0f, -0.2f, 0.0f}) * glm::scale(glm::mat4(1.0f), glm::vec3(0.5f)));
+
 		SE::Renderer::EndScene();
 	}
 
@@ -277,7 +281,7 @@ private:
 	SE::Ref<SE::Shader> m_FlatColorShader, m_TextureShader;
 	SE::Ref<SE::VertexArray> m_SquareVA;
 
-	SE::Ref<SE::Texture2D> m_Texture;
+	SE::Ref<SE::Texture2D> m_Texture, m_LogoTexture;
 
 	SE::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
