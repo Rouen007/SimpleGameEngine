@@ -6,7 +6,6 @@
 #include "Platform/OpenGL/OpenGLShader.h"
 #include <memory>
 
-
 class ExampleLayer : public SE::Layer
 {
 public:
@@ -100,7 +99,7 @@ public:
 
 )";
 
-		m_Shader.reset(SE::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = SE::Shader::Create("Normal", vertexSrc, fragmentSrc);
 
 
 		std::string flatColorVertexSrc = R"(
@@ -137,14 +136,14 @@ public:
 
 )";
 
-		m_FlatColorShader.reset(SE::Shader::Create(flatColorVertexSrc, flatColorFragmentSrc));
+		m_FlatColorShader = SE::Shader::Create("FlatShader", flatColorVertexSrc, flatColorFragmentSrc);
 
 		m_Texture = SE::Texture2D::Create("assets/textures/qiya2.jfif");
 		m_LogoTexture = SE::Texture2D::Create("assets/textures/qiya4.png");
-		m_TextureShader.reset(SE::Shader::Create("assets/shaders/Texture.glsl"));
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
-		std::dynamic_pointer_cast<SE::OpenGLShader>(m_TextureShader)->Bind();
-		std::dynamic_pointer_cast<SE::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0); // slot=0
+		std::dynamic_pointer_cast<SE::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<SE::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0); // slot=0
 	}
 
 	void OnUpdate(SE::Timestep ts) override
@@ -203,12 +202,13 @@ public:
 				SE::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 		//SE::Renderer::Submit(m_Shader, m_VertexArray);
+		auto textureShader = m_ShaderLibrary.Get("Texture");
 
 		m_Texture->Bind();
-		SE::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		SE::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		m_LogoTexture->Bind();
-		SE::Renderer::Submit(m_TextureShader, m_SquareVA, glm::translate(glm::mat4(1.0f), {1.0f, -0.2f, 0.0f}) * glm::scale(glm::mat4(1.0f), glm::vec3(0.5f)));
+		SE::Renderer::Submit(textureShader, m_SquareVA, glm::translate(glm::mat4(1.0f), {1.0f, -0.2f, 0.0f}) * glm::scale(glm::mat4(1.0f), glm::vec3(0.5f)));
 
 		SE::Renderer::EndScene();
 	}
@@ -237,9 +237,10 @@ public:
 	}
 
 private:
+	SE::ShaderLibrary m_ShaderLibrary;
 	SE::Ref<SE::Shader> m_Shader;
 	SE::Ref<SE::VertexArray> m_VertexArray;
-	SE::Ref<SE::Shader> m_FlatColorShader, m_TextureShader;
+	SE::Ref<SE::Shader> m_FlatColorShader;
 	SE::Ref<SE::VertexArray> m_SquareVA;
 
 	SE::Ref<SE::Texture2D> m_Texture, m_LogoTexture;

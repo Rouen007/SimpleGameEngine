@@ -28,9 +28,14 @@ namespace SE {
 		std::string shaderSrc = ReadFile(filepath);
 		auto shaderMaps = PreProcess(shaderSrc);
 		Compile(shaderMaps);
-
+		auto lastSlash = filepath.find_last_of("/\\");
+		lastSlash = lastSlash == std::string::npos ? 0 : lastSlash + 1;
+		auto lastDot = filepath.find_last_of(".");
+		auto count = lastDot == std::string::npos ? filepath.size() - lastSlash : lastDot - lastSlash;
+		m_Name = filepath.substr(lastSlash, count);
 	}
-	OpenGLShader::OpenGLShader(const std::string& vertexSource, const std::string& fragmentSource)
+	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSource, const std::string& fragmentSource)
+		: m_Name(name)
 	{
 		std::unordered_map<GLenum, std::string> sources;
 		sources[GL_VERTEX_SHADER] = vertexSource;
@@ -85,7 +90,10 @@ namespace SE {
 		// Now time to link them together into a program.
 		// Get a program object.
 		GLuint program = glCreateProgram();
-		std::vector<GLenum> glShaderIDs;
+		SE_CORE_ASSERT(shaders.size() <= 2, "We only support 2 shaders for now!");
+		std::array<GLenum, 2> glShaderIDs;
+		int glShaderIDIdx = 0;
+		//glShaderIDs.reserve(shaders.size());
 
 		for (auto& kv : shaders)
 		{
@@ -127,7 +135,7 @@ namespace SE {
 			}
 			// Attach our shaders to our program
 			glAttachShader(program, shader);
-			glShaderIDs.push_back(shader);
+			glShaderIDs[glShaderIDIdx++] = shader;
 		}
 		
 		
