@@ -169,6 +169,7 @@
     <ClInclude Include="src\SimpleEngine\LayerStack.h" />
     <ClInclude Include="src\SimpleEngine\Log.h" />
     <ClInclude Include="src\SimpleEngine\MouseButtonCodes.h" />
+    <ClInclude Include="src\SimpleEngine\OrthographicCameraController.h" />
     <ClInclude Include="src\SimpleEngine\Renderer\Buffer.h" />
     <ClInclude Include="src\SimpleEngine\Renderer\GraphicsContexture.h" />
     <ClInclude Include="src\SimpleEngine\Renderer\OrthographicCamera.h" />
@@ -613,6 +614,7 @@
     <ClCompile Include="src\SimpleEngine\Layer.cpp" />
     <ClCompile Include="src\SimpleEngine\LayerStack.cpp" />
     <ClCompile Include="src\SimpleEngine\Log.cpp" />
+    <ClCompile Include="src\SimpleEngine\OrthographicCameraController.cpp" />
     <ClCompile Include="src\SimpleEngine\Renderer\Buffer.cpp" />
     <ClCompile Include="src\SimpleEngine\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\SimpleEngine\Renderer\RenderCommand.cpp" />

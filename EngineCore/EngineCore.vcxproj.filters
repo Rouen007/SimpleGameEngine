@@ -1416,6 +1416,9 @@
     <ClInclude Include="third_parties\stb_image\stb_image.h">
       <Filter>third_parties\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\SimpleEngine\OrthographicCameraController.h">
+      <Filter>src\SimpleEngine\Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1489,6 +1492,9 @@
     </ClCompile>
     <ClCompile Include="third_parties\stb_image\stb_image.cpp">
       <Filter>third_parties\stb_image</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SimpleEngine\OrthographicCameraController.cpp">
+      <Filter>src\SimpleEngine\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

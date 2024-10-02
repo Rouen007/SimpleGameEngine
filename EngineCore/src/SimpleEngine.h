@@ -10,6 +10,7 @@
 #include "SimpleEngine/Log.h"
 #include "SimpleEngine/Imgui/ImGuiLayer.h"
 #include "SimpleEngine/Core/Timestep.h"
+#include "SimpleEngine/OrthographicCameraController.h"
 
 // -------------------Render------------
 
