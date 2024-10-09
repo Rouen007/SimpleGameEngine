@@ -29,5 +29,5 @@
 #include "stdio.h"
 
 // -------------------Entry Point------------
-#include "SimpleEngine/Core/EntryPoint.h"
+// #include "SimpleEngine/Core/EntryPoint.h"
 
