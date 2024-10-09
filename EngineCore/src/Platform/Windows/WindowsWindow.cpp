@@ -1,6 +1,6 @@
 #include "sepch.h"
 #include "WindowsWindow.h"
-#include "SimpleEngine/Log.h"
+#include "SimpleEngine/Core/Log.h"
 #include "SimpleEngine/Events/ApplicationEvent.h"
 #include "SimpleEngine/Events/MouseEvent.h"
 #include "SimpleEngine/Events/KeyEvent.h"

@@ -1,5 +1,5 @@
 #pragma once
-#include "SimpleEngine/Input.h"
+#include "SimpleEngine/Core/Input.h"
 
 namespace SE
 {

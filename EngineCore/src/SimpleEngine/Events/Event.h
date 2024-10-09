@@ -1,6 +1,6 @@
 #pragma once
 #include "sepch.h"
-#include "SimpleEngine/Core.h"
+#include "SimpleEngine/Core/Core.h"
 
 namespace SE
 {

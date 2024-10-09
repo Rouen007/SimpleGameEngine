@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "SimpleEngine/Core.h"
+#include "SimpleEngine/Core/Core.h"
 
 namespace SE
 {

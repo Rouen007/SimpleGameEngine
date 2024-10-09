@@ -2,15 +2,15 @@
 
 // for use by applications
 
-#include "SimpleEngine/Application.h"
-#include "SimpleEngine/Input.h"
-#include "SimpleEngine/KeyCodes.h"
-#include "SimpleEngine/MouseButtonCodes.h"
-#include "SimpleEngine/Layer.h"
-#include "SimpleEngine/Log.h"
+#include "SimpleEngine/Core/Application.h"
+#include "SimpleEngine/Core/Input.h"
+#include "SimpleEngine/Core/KeyCodes.h"
+#include "SimpleEngine/Core/MouseButtonCodes.h"
+#include "SimpleEngine/Core/Layer.h"
+#include "SimpleEngine/Core/Log.h"
 #include "SimpleEngine/Imgui/ImGuiLayer.h"
 #include "SimpleEngine/Core/Timestep.h"
-#include "SimpleEngine/OrthographicCameraController.h"
+#include "SimpleEngine/Renderer/OrthographicCameraController.h"
 
 // -------------------Render------------
 
@@ -29,5 +29,5 @@
 #include "stdio.h"
 
 // -------------------Entry Point------------
-#include "SimpleEngine/EntryPoint.h"
+#include "SimpleEngine/Core/EntryPoint.h"
 

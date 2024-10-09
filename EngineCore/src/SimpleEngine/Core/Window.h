@@ -2,7 +2,7 @@
 
 #include "sepch.h"
 
-#include "SimpleEngine/Core.h"
+#include "SimpleEngine/Core/Core.h"
 #include "SimpleEngine/Events/Event.h"
 
 namespace SE

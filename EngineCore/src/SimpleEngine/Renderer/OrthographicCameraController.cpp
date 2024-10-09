@@ -1,7 +1,7 @@
 #include "sepch.h"
 #include "OrthographicCameraController.h"
-#include "SimpleEngine/Input.h"
-#include "SimpleEngine/KeyCodes.h"
+#include "SimpleEngine/Core/Input.h"
+#include "SimpleEngine/Core/KeyCodes.h"
 
 namespace SE
 {

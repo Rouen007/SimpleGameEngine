@@ -84,17 +84,38 @@
     <ClInclude Include="src\SimpleEngine.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\SimpleEngine\Application.h">
-      <Filter>src\SimpleEngine</Filter>
+    <ClInclude Include="src\SimpleEngine\Core\Application.h">
+      <Filter>src\SimpleEngine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\SimpleEngine\Core.h">
-      <Filter>src\SimpleEngine</Filter>
+    <ClInclude Include="src\SimpleEngine\Core\Core.h">
+      <Filter>src\SimpleEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SimpleEngine\Core\EntryPoint.h">
+      <Filter>src\SimpleEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SimpleEngine\Core\Input.h">
+      <Filter>src\SimpleEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SimpleEngine\Core\KeyCodes.h">
+      <Filter>src\SimpleEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SimpleEngine\Core\Layer.h">
+      <Filter>src\SimpleEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SimpleEngine\Core\LayerStack.h">
+      <Filter>src\SimpleEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SimpleEngine\Core\Log.h">
+      <Filter>src\SimpleEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SimpleEngine\Core\MouseButtonCodes.h">
+      <Filter>src\SimpleEngine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\SimpleEngine\Core\Timestep.h">
       <Filter>src\SimpleEngine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\SimpleEngine\EntryPoint.h">
-      <Filter>src\SimpleEngine</Filter>
+    <ClInclude Include="src\SimpleEngine\Core\Window.h">
+      <Filter>src\SimpleEngine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\SimpleEngine\Events\ApplicationEvent.h">
       <Filter>src\SimpleEngine\Events</Filter>
@@ -114,24 +135,6 @@
     <ClInclude Include="src\SimpleEngine\ImGui\ImGuiLayer.h">
       <Filter>src\SimpleEngine\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\SimpleEngine\Input.h">
-      <Filter>src\SimpleEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SimpleEngine\KeyCodes.h">
-      <Filter>src\SimpleEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SimpleEngine\Layer.h">
-      <Filter>src\SimpleEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SimpleEngine\LayerStack.h">
-      <Filter>src\SimpleEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SimpleEngine\Log.h">
-      <Filter>src\SimpleEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SimpleEngine\MouseButtonCodes.h">
-      <Filter>src\SimpleEngine</Filter>
-    </ClInclude>
     <ClInclude Include="src\SimpleEngine\Renderer\Buffer.h">
       <Filter>src\SimpleEngine\Renderer</Filter>
     </ClInclude>
@@ -139,6 +142,9 @@
       <Filter>src\SimpleEngine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\SimpleEngine\Renderer\OrthographicCamera.h">
+      <Filter>src\SimpleEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SimpleEngine\Renderer\OrthographicCameraController.h">
       <Filter>src\SimpleEngine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\SimpleEngine\Renderer\RenderCommand.h">
@@ -158,9 +164,6 @@
     </ClInclude>
     <ClInclude Include="src\SimpleEngine\Renderer\VertexArray.h">
       <Filter>src\SimpleEngine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SimpleEngine\Window.h">
-      <Filter>src\SimpleEngine</Filter>
     </ClInclude>
     <ClInclude Include="src\sepch.h">
       <Filter>src</Filter>
@@ -1416,9 +1419,6 @@
     <ClInclude Include="third_parties\stb_image\stb_image.h">
       <Filter>third_parties\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\SimpleEngine\OrthographicCameraController.h">
-      <Filter>src\SimpleEngine\Renderer</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1445,8 +1445,17 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\SimpleEngine\Application.cpp">
-      <Filter>src\SimpleEngine</Filter>
+    <ClCompile Include="src\SimpleEngine\Core\Application.cpp">
+      <Filter>src\SimpleEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SimpleEngine\Core\Layer.cpp">
+      <Filter>src\SimpleEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SimpleEngine\Core\LayerStack.cpp">
+      <Filter>src\SimpleEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SimpleEngine\Core\Log.cpp">
+      <Filter>src\SimpleEngine\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\SimpleEngine\ImGui\ImGuiBuild.cpp">
       <Filter>src\SimpleEngine\ImGui</Filter>
@@ -1454,19 +1463,13 @@
     <ClCompile Include="src\SimpleEngine\ImGui\ImGuiLayer.cpp">
       <Filter>src\SimpleEngine\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="src\SimpleEngine\Layer.cpp">
-      <Filter>src\SimpleEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SimpleEngine\LayerStack.cpp">
-      <Filter>src\SimpleEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SimpleEngine\Log.cpp">
-      <Filter>src\SimpleEngine</Filter>
-    </ClCompile>
     <ClCompile Include="src\SimpleEngine\Renderer\Buffer.cpp">
       <Filter>src\SimpleEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\SimpleEngine\Renderer\OrthographicCamera.cpp">
+      <Filter>src\SimpleEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SimpleEngine\Renderer\OrthographicCameraController.cpp">
       <Filter>src\SimpleEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\SimpleEngine\Renderer\RenderCommand.cpp">
@@ -1492,9 +1495,6 @@
     </ClCompile>
     <ClCompile Include="third_parties\stb_image\stb_image.cpp">
       <Filter>third_parties\stb_image</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SimpleEngine\OrthographicCameraController.cpp">
-      <Filter>src\SimpleEngine\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 #include "sepch.h"
 #include "ImGuiLayer.h"
 #include "GLFW/glfw3.h"
-#include "SimpleEngine/Application.h"
+#include "SimpleEngine/Core/Application.h"
 #include <glad/glad.h>
 
 #include "backends/imgui_impl_glfw.h"

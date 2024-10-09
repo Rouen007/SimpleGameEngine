@@ -1,6 +1,6 @@
 #include "sepch.h"
 #include "Application.h"
-#include "SimpleEngine/Log.h"
+#include "SimpleEngine/Core/Log.h"
 
 #include <glad/glad.h>
 #include "Input.h"

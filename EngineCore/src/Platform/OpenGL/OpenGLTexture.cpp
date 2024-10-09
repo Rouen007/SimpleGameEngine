@@ -2,7 +2,7 @@
 #include "OpenGLTexture.h"
 #include <stb_image.h>
 #include <glad/glad.h>
-#include "SimpleEngine/Log.h"
+#include "SimpleEngine/Core/Log.h"
 
 
 

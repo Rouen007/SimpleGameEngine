@@ -1,7 +1,7 @@
 #include "sepch.h"
 #include <fstream>
 #include "OpenGLShader.h"
-#include "SimpleEngine/Log.h"
+#include "SimpleEngine/Core/Log.h"
 #include <glm/gtc/type_ptr.hpp>
 #include <glad/glad.h>
 
