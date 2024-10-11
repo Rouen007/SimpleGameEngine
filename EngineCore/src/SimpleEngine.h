@@ -15,6 +15,7 @@
 // -------------------Render------------
 
 #include "SimpleEngine/Renderer/Renderer.h"
+#include "SimpleEngine/Renderer/Renderer2D.h"
 #include "SimpleEngine/Renderer/RenderCommand.h"
 
 #include "SimpleEngine/Renderer/Buffer.h"

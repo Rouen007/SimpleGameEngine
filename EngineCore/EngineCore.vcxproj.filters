@@ -153,6 +153,9 @@
     <ClInclude Include="src\SimpleEngine\Renderer\Renderer.h">
       <Filter>src\SimpleEngine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\SimpleEngine\Renderer\Renderer2D.h">
+      <Filter>src\SimpleEngine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\SimpleEngine\Renderer\RendererAPI.h">
       <Filter>src\SimpleEngine\Renderer</Filter>
     </ClInclude>
@@ -1476,6 +1479,9 @@
       <Filter>src\SimpleEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\SimpleEngine\Renderer\Renderer.cpp">
+      <Filter>src\SimpleEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SimpleEngine\Renderer\Renderer2D.cpp">
       <Filter>src\SimpleEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\SimpleEngine\Renderer\RendererAPI.cpp">

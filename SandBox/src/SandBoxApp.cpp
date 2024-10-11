@@ -198,8 +198,6 @@ public:
 
 	bool OnKeyPressedEvent(SE::KeyPressedEvent& event)
 	{
-		
-
 		return false;
 	}
 

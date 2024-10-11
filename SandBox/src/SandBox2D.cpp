@@ -13,29 +13,7 @@ SandBox2D::SandBox2D()
 
 void SandBox2D::OnAttach() 
 {
-	float squarevertices[3 * 4] = {
-		-0.5f, -0.5f, 0.0f, 
-		 0.5f, -0.5f, 0.0f, 
-		 0.5f,  0.5f, 0.0f, 
-		-0.5f,  0.5f, 0.0f, 
-	};
-
-	m_SquareVA = SE::VertexArray::Create();
-	SE::Ref<SE::VertexBuffer> sqVb;
-	sqVb.reset(SE::VertexBuffer::Create(squarevertices, sizeof(squarevertices)));
-
-	sqVb->SetLayout({
-		{SE::ShaderDataType::Float3, "a_Position"},
-		});
-	m_SquareVA->AddVertexBuffer(sqVb);
-
-	unsigned int squareindices[6] = { 0, 1, 2, 2, 3, 0 };
-	SE::Ref<SE::IndexBuffer> sqIb;
-	sqIb.reset(SE::IndexBuffer::Create(squareindices, sizeof(squareindices) / sizeof(uint32_t)));
-
-	m_SquareVA->SetIndexBuffer(sqIb);
-
-	m_FlatColorShader = SE::Shader::Create("assets/shaders/FlatColor.glsl");
+	
 	
 }
 void SandBox2D::OnDetach() 
@@ -49,18 +27,15 @@ void SandBox2D::OnUpdate(SE::Timestep ts)
 	SE::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 	SE::RenderCommand::Clear();
 
+	SE::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
+	/*std::dynamic_pointer_cast<SE::OpenGLShader>(m_FlatColorShader)->Bind();
+	std::dynamic_pointer_cast<SE::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat4("u_Color", m_SquareColor);*/
+	SE::Renderer2D::DrawQuad({ 0.f, 0.f }, { 1.f, 1.f }, { 0.8f, 0.2f, 0.3f, 1.0f });
 
-	SE::Renderer::BeginScene(m_CameraController.GetCamera());
+	// SE::Renderer::Submit(m_FlatColorShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
-	std::dynamic_pointer_cast<SE::OpenGLShader>(m_FlatColorShader)->Bind();
-	std::dynamic_pointer_cast<SE::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat4("u_Color", m_SquareColor);
-
-	
-
-	SE::Renderer::Submit(m_FlatColorShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
-
-	SE::Renderer::EndScene();
+	SE::Renderer2D::EndScene();
 
 }
 
