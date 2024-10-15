@@ -13,7 +13,7 @@ SandBox2D::SandBox2D()
 
 void SandBox2D::OnAttach() 
 {
-	
+	m_QiyaTexture = SE::Texture2D::Create("assets/textures/qiya4.png");
 	
 }
 void SandBox2D::OnDetach() 
@@ -33,6 +33,8 @@ void SandBox2D::OnUpdate(SE::Timestep ts)
 	std::dynamic_pointer_cast<SE::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat4("u_Color", m_SquareColor);*/
 	SE::Renderer2D::DrawQuad({ -1.f, 0.f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
 	SE::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.2f, 0.3f, 0.8f, 1.0f });
+
+	SE::Renderer2D::DrawQuad({ 0.2f, 0.5f, -0.1f}, { 1.8f, 3.2f }, m_QiyaTexture);
 
 	// SE::Renderer::Submit(m_FlatColorShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 

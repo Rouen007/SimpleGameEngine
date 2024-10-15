@@ -12,6 +12,7 @@ namespace SE
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
 
+		virtual void SetInt(const std::string& name, int val) = 0;
 		virtual void SetMat4(const std::string& name, const glm::mat4& mat) = 0;
 		virtual void SetFloat3(const std::string& name, const glm::vec3& val) = 0;
 		virtual void SetFloat4(const std::string& name, const glm::vec4& val) = 0;

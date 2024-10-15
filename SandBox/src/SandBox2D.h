@@ -18,6 +18,7 @@ private:
 	//temp
 	SE::Ref<SE::VertexArray> m_SquareVA;
 	SE::Ref<SE::Shader> m_FlatColorShader;
+	SE::Ref<SE::Texture2D> m_QiyaTexture;
 
 	glm::vec4 m_SquareColor{ 0.2f, 0.3f, 0.8f, 1.0f };
 

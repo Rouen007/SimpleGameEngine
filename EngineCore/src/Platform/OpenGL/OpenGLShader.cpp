@@ -183,6 +183,11 @@ namespace SE {
 		glUseProgram(0);
 	}
 
+	void OpenGLShader::SetInt(const std::string& name, int val)
+	{
+		UploadUniformInt(name, val);
+	}
+
 	void OpenGLShader::SetMat4(const std::string& name, const glm::mat4& mat)
 	{
 		UploadUniformMat4(name, mat);
