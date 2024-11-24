@@ -1,10 +1,13 @@
 #include <SimpleEngine.h>
+#include <SimpleEngine/Core/EntryPoint.h>
 
 #include "imgui/imgui.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include "Platform/OpenGL/OpenGLShader.h"
 #include <memory>
+
+#include "SandBox2D.h"
 
 class ExampleLayer : public SE::Layer
 {
@@ -13,7 +16,7 @@ public:
 		: Layer("Example")
 		, m_CameraController(1280.f/720.f)
 	{
-		m_VertexArray.reset(SE::VertexArray::Create());
+		m_VertexArray = SE::VertexArray::Create();
 
 
 		float vertices[3 * 7] = {
@@ -45,7 +48,7 @@ public:
 			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
 		};
 
-		m_SquareVA.reset(SE::VertexArray::Create());
+		m_SquareVA = SE::VertexArray::Create();
 		SE::Ref<SE::VertexBuffer> sqVb;
 		sqVb.reset(SE::VertexBuffer::Create(squarevertices, sizeof(squarevertices)));
 
@@ -195,8 +198,6 @@ public:
 
 	bool OnKeyPressedEvent(SE::KeyPressedEvent& event)
 	{
-		
-
 		return false;
 	}
 
@@ -229,7 +230,8 @@ class Sandbox : public SE::Application
 {
 public:
 	Sandbox() {
-		PushLayer(new ExampleLayer());
+		// PushLayer(new ExampleLayer());
+		PushLayer(new SandBox2D());
 	}
 	~Sandbox() {}
 };

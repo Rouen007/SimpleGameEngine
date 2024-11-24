@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <string>
-#include "SimpleEngine/Log.h"
+#include "SimpleEngine/Core/Log.h"
 
 namespace SE
 {

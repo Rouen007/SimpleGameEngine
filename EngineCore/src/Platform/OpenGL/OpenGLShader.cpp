@@ -1,7 +1,7 @@
 #include "sepch.h"
 #include <fstream>
 #include "OpenGLShader.h"
-#include "SimpleEngine/Log.h"
+#include "SimpleEngine/Core/Log.h"
 #include <glm/gtc/type_ptr.hpp>
 #include <glad/glad.h>
 
@@ -182,6 +182,25 @@ namespace SE {
 	{
 		glUseProgram(0);
 	}
+
+	void OpenGLShader::SetInt(const std::string& name, int val)
+	{
+		UploadUniformInt(name, val);
+	}
+
+	void OpenGLShader::SetMat4(const std::string& name, const glm::mat4& mat)
+	{
+		UploadUniformMat4(name, mat);
+	}
+	void OpenGLShader::SetFloat3(const std::string& name, const glm::vec3& val)
+	{
+		UploadUniformFloat3(name, val);
+	}
+	void OpenGLShader::SetFloat4(const std::string& name, const glm::vec4& val)
+	{
+		UploadUniformFloat4(name, val);
+	}
+
 	void OpenGLShader::UploadUniformInt(const std::string& name, int val)
 	{
 		GLint location = glGetUniformLocation(m_RendererID, name.c_str());

@@ -1,7 +1,7 @@
 #include "sepch.h"
 #include "OpenGLContext.h"
 
-#include "SimpleEngine/Log.h"
+#include "SimpleEngine/Core/Log.h"
 
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>

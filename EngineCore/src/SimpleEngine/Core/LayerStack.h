@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SimpleEngine/Core.h"
+#include "SimpleEngine/Core/Core.h"
 #include "Layer.h"
 
 namespace SE

@@ -1,6 +1,6 @@
 #include "sepch.h"
 #include "WindowsInput.h"
-#include "SimpleEngine/Application.h"
+#include "SimpleEngine/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 

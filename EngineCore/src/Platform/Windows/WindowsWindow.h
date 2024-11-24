@@ -1,5 +1,5 @@
 #pragma once
-#include "SimpleEngine/Window.h"
+#include "SimpleEngine/Core/Window.h"
 #include "SimpleEngine/Renderer/GraphicsContexture.h"
 #include <GLFW/glfw3.h>
 
