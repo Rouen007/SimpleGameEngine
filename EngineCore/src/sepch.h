@@ -23,6 +23,9 @@ Compiler Collection.
 #include <unordered_map>
 #include <unordered_set>
 
+#include "SimpleEngine/Core/Log.h"
+#include "SimpleEngine/Debug/Instrumentor.h"
+
 #ifdef SE_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

@@ -164,6 +164,7 @@
     <ClInclude Include="src\SimpleEngine\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\SimpleEngine\Core\Timestep.h" />
     <ClInclude Include="src\SimpleEngine\Core\Window.h" />
+    <ClInclude Include="src\SimpleEngine\Debug\Instrumentor.h" />
     <ClInclude Include="src\SimpleEngine\Events\ApplicationEvent.h" />
     <ClInclude Include="src\SimpleEngine\Events\Event.h" />
     <ClInclude Include="src\SimpleEngine\Events\KeyEvent.h" />

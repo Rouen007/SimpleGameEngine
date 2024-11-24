@@ -19,6 +19,9 @@
     <Filter Include="src\SimpleEngine\Core">
       <UniqueIdentifier>{94888A1E-00F5-4519-C9E8-DD7635146881}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\SimpleEngine\Debug">
+      <UniqueIdentifier>{32F6E7EF-1EF0-1042-075D-A752F3F576AE}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\SimpleEngine\Events">
       <UniqueIdentifier>{200F71F0-8C46-B987-9550-1DAB0107E080}</UniqueIdentifier>
     </Filter>
@@ -117,6 +120,9 @@
     <ClInclude Include="src\SimpleEngine\Core\Window.h">
       <Filter>src\SimpleEngine\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\SimpleEngine\Debug\Instrumentor.h">
+      <Filter>src\SimpleEngine\Debug</Filter>
+    </ClInclude>
     <ClInclude Include="src\SimpleEngine\Events\ApplicationEvent.h">
       <Filter>src\SimpleEngine\Events</Filter>
     </ClInclude>
@@ -135,30 +141,6 @@
     <ClInclude Include="src\SimpleEngine\ImGui\ImGuiLayer.h">
       <Filter>src\SimpleEngine\ImGui</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="src\SimpleEngine\Input.h">
-      <Filter>src\SimpleEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SimpleEngine\KeyCodes.h">
-      <Filter>src\SimpleEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SimpleEngine\Layer.h">
-      <Filter>src\SimpleEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SimpleEngine\LayerStack.h">
-      <Filter>src\SimpleEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SimpleEngine\Log.h">
-      <Filter>src\SimpleEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SimpleEngine\MouseButtonCodes.h">
-      <Filter>src\SimpleEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SimpleEngine\OrthographicCameraController.h">
-      <Filter>src\SimpleEngine</Filter>
-    </ClInclude>
-=======
->>>>>>> 08878d8e18c3c66dd125a97bca2013d36d5b5fe9
     <ClInclude Include="src\SimpleEngine\Renderer\Buffer.h">
       <Filter>src\SimpleEngine\Renderer</Filter>
     </ClInclude>
@@ -1490,21 +1472,6 @@
     <ClCompile Include="src\SimpleEngine\ImGui\ImGuiLayer.cpp">
       <Filter>src\SimpleEngine\ImGui</Filter>
     </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="src\SimpleEngine\Layer.cpp">
-      <Filter>src\SimpleEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SimpleEngine\LayerStack.cpp">
-      <Filter>src\SimpleEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SimpleEngine\Log.cpp">
-      <Filter>src\SimpleEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SimpleEngine\OrthographicCameraController.cpp">
-      <Filter>src\SimpleEngine</Filter>
-    </ClCompile>
-=======
->>>>>>> 08878d8e18c3c66dd125a97bca2013d36d5b5fe9
     <ClCompile Include="src\SimpleEngine\Renderer\Buffer.cpp">
       <Filter>src\SimpleEngine\Renderer</Filter>
     </ClCompile>
