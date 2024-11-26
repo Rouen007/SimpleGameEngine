@@ -24,7 +24,7 @@ Compiler Collection.
 #include <unordered_set>
 
 #include "SimpleEngine/Core/Log.h"
-#include "SimpleEngine/Debug/Instrumentor.h"
+#include "SimpleEngine/Debugs/Instrumentor.h"
 
 #ifdef SE_PLATFORM_WINDOWS
 	#include <Windows.h>
