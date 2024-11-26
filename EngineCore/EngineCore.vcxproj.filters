@@ -19,8 +19,8 @@
     <Filter Include="src\SimpleEngine\Core">
       <UniqueIdentifier>{94888A1E-00F5-4519-C9E8-DD7635146881}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\SimpleEngine\Debug">
-      <UniqueIdentifier>{32F6E7EF-1EF0-1042-075D-A752F3F576AE}</UniqueIdentifier>
+    <Filter Include="src\SimpleEngine\Debugs">
+      <UniqueIdentifier>{E5BCE6EC-51F4-2E84-5AFE-92A7C6B4557D}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\SimpleEngine\Events">
       <UniqueIdentifier>{200F71F0-8C46-B987-9550-1DAB0107E080}</UniqueIdentifier>
@@ -120,8 +120,8 @@
     <ClInclude Include="src\SimpleEngine\Core\Window.h">
       <Filter>src\SimpleEngine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\SimpleEngine\Debug\Instrumentor.h">
-      <Filter>src\SimpleEngine\Debug</Filter>
+    <ClInclude Include="src\SimpleEngine\Debugs\Instrumentor.h">
+      <Filter>src\SimpleEngine\Debugs</Filter>
     </ClInclude>
     <ClInclude Include="src\SimpleEngine\Events\ApplicationEvent.h">
       <Filter>src\SimpleEngine\Events</Filter>
