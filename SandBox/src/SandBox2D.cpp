@@ -56,12 +56,14 @@ SandBox2D::SandBox2D()
 
 void SandBox2D::OnAttach() 
 {
+	SE_PROFILE_FUNCTION();
+
 	m_QiyaTexture = SE::Texture2D::Create("assets/textures/qiya4.png");
 	
 }
 void SandBox2D::OnDetach() 
 {
-
+	SE_PROFILE_FUNCTION();
 }
 void SandBox2D::OnUpdate(SE::Timestep ts) 
 {

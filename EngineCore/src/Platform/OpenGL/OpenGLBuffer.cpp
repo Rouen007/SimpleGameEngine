@@ -11,6 +11,8 @@ namespace SE
 	/// <param name="size"></param>
 	OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t size)
 	{
+		SE_PROFILE_FUNCTION();
+
 		glCreateBuffers(1, &m_RendererID);
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
 		glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
@@ -18,15 +20,21 @@ namespace SE
 
 	OpenGLVertexBuffer::~OpenGLVertexBuffer()
 	{
+		SE_PROFILE_FUNCTION();
+
 		glDeleteBuffers(1, &m_RendererID);
 	}
 
 	void OpenGLVertexBuffer::Bind() const
 	{
+		SE_PROFILE_FUNCTION();
+
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
 	}
 	void OpenGLVertexBuffer::Unbind() const
 	{
+		SE_PROFILE_FUNCTION();
+
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
@@ -40,6 +48,8 @@ namespace SE
 	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* indices, uint32_t count)
 		: m_Count(count)
 	{
+		SE_PROFILE_FUNCTION();
+
 		glCreateBuffers(1, &m_RendererID);
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
@@ -48,18 +58,22 @@ namespace SE
 	}
 	OpenGLIndexBuffer::~OpenGLIndexBuffer()
 	{
+		SE_PROFILE_FUNCTION();
+
 		glDeleteBuffers(1, &m_RendererID);
 
 	}
 
 	void OpenGLIndexBuffer::Bind() const
 	{
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
+		SE_PROFILE_FUNCTION();
 
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
 	}
 	void OpenGLIndexBuffer::Unbind() const 
 	{
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		SE_PROFILE_FUNCTION();
 
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}
 }

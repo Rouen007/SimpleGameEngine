@@ -20,6 +20,8 @@ namespace SE
 
 	void Renderer2D::Init()
 	{
+		SE_PROFILE_FUNCTION();
+
 		float squarevertices[5 * 4] = {
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
 			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,

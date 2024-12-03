@@ -40,6 +40,8 @@ namespace SE
 
 	Application::Application()
 	{
+		SE_PROFILE_FUNCTION();
+
 		SE_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 		m_Window = std::unique_ptr<Window>(Window::Create());
@@ -58,6 +60,8 @@ namespace SE
 
 	void Application::OnEvent(Event& e)
 	{
+		SE_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));
@@ -74,6 +78,8 @@ namespace SE
 
 	void Application::Run()
 	{
+		SE_PROFILE_FUNCTION();
+
 		WindowResizeEvent e(1280, 720);
 		SE_CLIENT_TRACE(e.ToString());
 		if (e.IsInCategory(EventCategoryApplication))
@@ -87,22 +93,32 @@ namespace SE
 		
 		while (m_Running)
 		{
+			SE_PROFILE_SCOPE("Run Loop");
+
 			float time = (float) glfwGetTime();
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
 			if (!m_Minimize)
 			{
-				for (auto layer : m_LayerStack)
 				{
-					layer->OnUpdate(timestep);
+					SE_PROFILE_SCOPE("Layer::OnUpdate()");
+					for (auto layer : m_LayerStack)
+					{
+						layer->OnUpdate(timestep);
+					}
 				}
+
+				m_ImGuiLayer->Begin();
+				{
+					SE_PROFILE_SCOPE("Layer::OnImGuiRender()");
+
+					for (auto layer : m_LayerStack)
+					{
+						layer->OnImGuiRender();
+					}
+				}
+				m_ImGuiLayer->End();
 			}
-			m_ImGuiLayer->Begin();
-			for (auto layer : m_LayerStack)
-			{
-				layer->OnImGuiRender();
-			}
-			m_ImGuiLayer->End();
 			/*auto [x, y] = Input::GetMousePosition();
 			SE_CORE_TRACE("{0}, {1}", x, y);*/
 			m_Window->OnUpdate();
@@ -110,11 +126,15 @@ namespace SE
 	}
 	bool Application::OnWindowClose(WindowCloseEvent& e)
 	{
+		SE_PROFILE_FUNCTION();
+
 		m_Running = false;
 		return true;
 	}
 	bool Application::OnWindowResize(WindowResizeEvent& e)
 	{
+		SE_PROFILE_FUNCTION();
+
 		if (e.GetWidth() == 0 || e.GetHeight() == 0)
 		{
 			m_Minimize = true;
@@ -127,14 +147,17 @@ namespace SE
 	}
 	void Application::PushLayer(Layer* layer)
 	{
+		SE_PROFILE_FUNCTION();
+
 		m_LayerStack.PushLayer(layer);
 		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* overlay)
 	{
+		SE_PROFILE_FUNCTION();
+
 		m_LayerStack.PushOverlay(overlay); 
 		overlay->OnAttach();
-
 	}
 }

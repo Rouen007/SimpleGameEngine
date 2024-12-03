@@ -15,6 +15,8 @@ namespace SE
 	}
 	void OrthographicCameraController::OnUpdate(Timestep ts)
 	{
+		SE_PROFILE_FUNCTION();
+
 		if (Input::IsKeyPressed(SE_KEY_A))
 		{
 			m_CameraPosition.x += m_CameraMoveSpeed * ts;
@@ -49,12 +51,16 @@ namespace SE
 	}
 	void OrthographicCameraController::OnEvent(Event& e)
 	{
+		SE_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<MouseScrolledEvent>(BIND_EVENT_FN_X(OrthographicCameraController::OnMouseScrolled));
 		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN_X(OrthographicCameraController::OnWindowResized));
 	}
 	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)
 	{
+		SE_PROFILE_FUNCTION();
+
 		m_ZoomLevel -= e.GetYOffset();
 		m_ZoomLevel = std::max(0.1f, m_ZoomLevel);
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
@@ -62,6 +68,8 @@ namespace SE
 	}
 	bool OrthographicCameraController::OnWindowResized(WindowResizeEvent& e)
 	{
+		SE_PROFILE_FUNCTION();
+
 		m_AspectRatio = (float) e.GetWidth() / e.GetHeight();
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
 		return false;

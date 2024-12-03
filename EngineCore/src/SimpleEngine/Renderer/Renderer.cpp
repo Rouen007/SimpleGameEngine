@@ -9,6 +9,8 @@ namespace SE
 
 	void Renderer::Init()
 	{
+		SE_PROFILE_FUNCTION();
+
 		RenderCommand::Init();
 		Renderer2D::Init();
 	}

@@ -13,16 +13,20 @@ namespace SE
 	ImGuiLayer::ImGuiLayer()
 		: Layer("ImGuiLayer")
 	{
+		SE_PROFILE_FUNCTION();
 
 	}
 	ImGuiLayer::~ImGuiLayer()
 	{
+		SE_PROFILE_FUNCTION();
 
 	}
 	
 
 	void ImGuiLayer::OnAttach() 
 	{
+		SE_PROFILE_FUNCTION();
+
 		// Setup Dear ImGui context
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -57,6 +61,8 @@ namespace SE
 	}
 	void ImGuiLayer::OnDetach() 
 	{
+		SE_PROFILE_FUNCTION();
+
 		ImGui_ImplOpenGL3_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
 		ImGui::DestroyContext();
@@ -65,6 +71,8 @@ namespace SE
 
 	void ImGuiLayer::Begin()
 	{
+		SE_PROFILE_FUNCTION();
+
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
@@ -72,6 +80,8 @@ namespace SE
 
 	void ImGuiLayer::End()
 	{
+		SE_PROFILE_FUNCTION();
+
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();
 		io.DisplaySize = ImVec2((float)app.GetWindow().GetWidth(), (float)app.GetWindow().GetHeight());
