@@ -25,8 +25,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.0f, 1.0f,
 		};
 
-		SE::Ref<SE::VertexBuffer> vb;
-		vb.reset(SE::VertexBuffer::Create(vertices, sizeof(vertices)));
+		SE::Ref<SE::VertexBuffer> vb = SE::VertexBuffer::Create(vertices, sizeof(vertices));
 
 		vb->SetLayout({
 			{SE::ShaderDataType::Float3, "a_Position"},
@@ -34,9 +33,8 @@ public:
 			});
 		m_VertexArray->AddVertexBuffer(vb);
 
-		SE::Ref<SE::IndexBuffer> ib;
 		unsigned int indices[3] = { 0, 1, 2 };
-		ib.reset(SE::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		SE::Ref<SE::IndexBuffer> ib = SE::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 
 		m_VertexArray->SetIndexBuffer(ib);
 
@@ -49,8 +47,7 @@ public:
 		};
 
 		m_SquareVA = SE::VertexArray::Create();
-		SE::Ref<SE::VertexBuffer> sqVb;
-		sqVb.reset(SE::VertexBuffer::Create(squarevertices, sizeof(squarevertices)));
+		SE::Ref<SE::VertexBuffer> sqVb = SE::VertexBuffer::Create(squarevertices, sizeof(squarevertices));
 
 		sqVb->SetLayout({
 			{SE::ShaderDataType::Float3, "a_Position"},
@@ -59,8 +56,7 @@ public:
 		m_SquareVA->AddVertexBuffer(sqVb);
 
 		unsigned int squareindices[6] = { 0, 1, 2, 2, 3, 0 };
-		SE::Ref<SE::IndexBuffer> sqIb;
-		sqIb.reset(SE::IndexBuffer::Create(squareindices, sizeof(squareindices) / sizeof(uint32_t)));
+		SE::Ref<SE::IndexBuffer> sqIb = SE::IndexBuffer::Create(squareindices, sizeof(squareindices) / sizeof(uint32_t));
 
 		m_SquareVA->SetIndexBuffer(sqIb);
 
