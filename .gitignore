@@ -400,3 +400,5 @@ FodyWeavers.xsd
 # Directories
 bin/
 bin-int/
+
+*.json
