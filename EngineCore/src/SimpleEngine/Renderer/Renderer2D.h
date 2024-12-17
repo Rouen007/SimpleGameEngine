@@ -16,8 +16,9 @@ namespace SE
 
 		static void DrawQuad(const glm::vec2& position, const glm::vec2& size, const glm::vec4& color);
 		static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color);		
+		static void DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<Texture>& texture, float tilingFactor=10.f);
+		static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture>& texture, float tilingFactor = 10.f, float rotation=0.0f);
 
-		static void DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<Texture>& texture);
-		static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture>& texture);
+
 	};
 }

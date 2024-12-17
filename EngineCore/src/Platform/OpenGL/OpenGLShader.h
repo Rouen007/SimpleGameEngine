@@ -17,11 +17,13 @@ namespace SE
 		virtual void Unbind() const override;
 
 		virtual void SetInt(const std::string& name, int val) override;
+		virtual void SetIntArray(const std::string& name, int* values, uint32_t count) override;
 		virtual void SetMat4(const std::string& name, const glm::mat4& mat) override;
 		virtual void SetFloat3(const std::string& name, const glm::vec3& val) override;
 		virtual void SetFloat4(const std::string& name, const glm::vec4& val) override;
 
 		void UploadUniformInt(const std::string& name, int val);
+		void UploadUniformIntArray(const std::string& name, int* values, uint32_t count);
 
 		const std::string& GetName() const override { return m_Name; }
 		

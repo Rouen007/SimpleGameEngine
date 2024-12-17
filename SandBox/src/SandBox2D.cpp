@@ -81,6 +81,8 @@ void SandBox2D::OnUpdate(SE::Timestep ts)
 	}
 
 	{
+		static float rotation = 0.0f;
+		rotation += ts * 20.f;
 		SE_PROFILE_SCOPE("Renderer::Draw");
 		
 		SE::Renderer2D::BeginScene(m_CameraController.GetCamera());
@@ -92,7 +94,8 @@ void SandBox2D::OnUpdate(SE::Timestep ts)
 
 		SE::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.2f, 0.3f, 0.8f, 1.0f });
 
-		//SE::Renderer2D::DrawQuad({ 0.2f, 0.5f, -0.1f }, { 1.8f, 3.2f }, m_QiyaTexture);
+		SE::Renderer2D::DrawQuad({ 0.2f, 0.5f, -0.1f }, { 1.8f, 3.2f }, m_QiyaTexture);
+		SE::Renderer2D::DrawQuad({ 0.5f, -0.5f, 0.0f }, { 0.9f, 1.6f }, m_QiyaTexture, 20.f, rotation);
 
 		// SE::Renderer::Submit(m_FlatColorShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 

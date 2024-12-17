@@ -204,6 +204,13 @@ namespace SE {
 		UploadUniformInt(name, val);
 	}
 
+	void OpenGLShader::SetIntArray(const std::string& name, int* values, uint32_t count)
+	{
+		SE_PROFILE_FUNCTION();
+
+		UploadUniformIntArray(name, values, count);
+	}
+
 	void OpenGLShader::SetMat4(const std::string& name, const glm::mat4& mat)
 	{
 		SE_PROFILE_FUNCTION();
@@ -230,6 +237,14 @@ namespace SE {
 		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
 		glUniform1i(location, val);
 
+	}
+
+	void OpenGLShader::UploadUniformIntArray(const std::string& name, int* values, uint32_t count)
+	{
+		SE_PROFILE_FUNCTION();
+
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniform1iv(location, count, values);
 	}
 
 	void OpenGLShader::UploadUniformFloat(const std::string& name, float val) {
