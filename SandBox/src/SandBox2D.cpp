@@ -69,6 +69,7 @@ void SandBox2D::OnUpdate(SE::Timestep ts)
 {
 	SE_PROFILE_FUNCTION("SandBox2D::OnUpdate");
 
+	SE::Renderer2D::ResetStats();
 	//update
 	{
 		SE_PROFILE_SCOPE("CameraController::OnUpdate");
@@ -100,6 +101,20 @@ void SandBox2D::OnUpdate(SE::Timestep ts)
 		// SE::Renderer::Submit(m_FlatColorShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		SE::Renderer2D::EndScene();
+
+		SE::Renderer2D::BeginScene(m_CameraController.GetCamera());
+
+		for (float y = -5.0f; y < 5.0f; y += 0.5f)
+		{
+			for (float x = -5.0f; x < 5.0f; x += 0.5f)
+			{
+				glm::vec4 rb = { (x + 5.0f) / 10.f, 0.4f, (y + 5.0f) / 10.f, 1.0f };
+				SE::Renderer2D::DrawQuad({ x, y }, { 0.45f, 0.45f }, rb);
+
+			}
+
+		}
+		SE::Renderer2D::EndScene();
 	}
 
 }
@@ -107,6 +122,13 @@ void SandBox2D::OnUpdate(SE::Timestep ts)
 void SandBox2D::OnImGuiRender()
 {
 	ImGui::Begin("Settings");
+	auto stats = SE::Renderer2D::GetStats();
+	ImGui::Text("Renderer2D Stats:");
+	ImGui::Text("Draw Calls:  %d", stats.DrawCalls);
+	ImGui::Text("Quad Count:  %d", stats.QuadCount);
+	ImGui::Text("Vertices:  %d", stats.GetTotalVertexCount());
+	ImGui::Text("Indices:  %d", stats.GetTotalIndexxCount());
+
 	ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
 
 	for (auto& result: m_ProfileResults)

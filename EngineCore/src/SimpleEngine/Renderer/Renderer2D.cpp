@@ -20,9 +20,9 @@ namespace SE
 
 	struct Renderer2DData
 	{
-		const uint32_t MaxQuads = 10000;
-		const uint32_t MaxVertices = MaxQuads * 4;
-		const uint32_t MaxIndices = MaxQuads * 6;
+		static const uint32_t MaxQuads = 2;
+		static const uint32_t MaxVertices = MaxQuads * 4;
+		static const uint32_t MaxIndices = MaxQuads * 6;
 		static const uint32_t MaxTextureSlot = 32;
 
 		Ref<VertexArray> QuadVertexArray;
@@ -39,6 +39,8 @@ namespace SE
 		uint32_t TextureSlotIndex = 1;  // 0 white
 
 		glm::vec4 QuadVertexPositions[4];
+
+		Renderer2D::Statistics Stats;
 	};
 
 	static Renderer2DData s_Data;
@@ -151,7 +153,17 @@ namespace SE
 			s_Data.TextureSlots[i]->Bind(i);
 		}
 		RenderCommand::DrawIndexed(s_Data.QuadVertexArray, s_Data.QuadIndexCount);
+		s_Data.Stats.DrawCalls++;
 
+	}
+
+	void Renderer2D::StartNewBatch()
+	{
+		EndScene();
+
+		s_Data.QuadIndexCount = 0;
+		s_Data.QuadVertexBufferPtr = s_Data.QuadVertexBufferBase;
+		s_Data.TextureSlotIndex = 1;
 	}
 	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const glm::vec4& color)
 	{
@@ -161,6 +173,11 @@ namespace SE
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color)
 	{
 		SE_PROFILE_FUNCTION();
+
+		if (s_Data.QuadIndexCount >= Renderer2DData::MaxIndices)
+		{
+			StartNewBatch();
+		}
 
 		const float texIndex = 0.0f;// white texture
 		const float tilingFactor = 1.0f;
@@ -197,6 +214,7 @@ namespace SE
 		s_Data.QuadVertexBufferPtr++;
 
 		s_Data.QuadIndexCount += 6;
+		s_Data.Stats.QuadCount++;
 
 		/*s_Data.TextureShader->SetFloat4("u_Color", color);
 		s_Data.WhiteTexture->Bind(0);
@@ -213,7 +231,10 @@ namespace SE
 	}
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture>& texture, float tilingFactor/*=10.f*/, float rotation/* = 0.0f*/)
 	{
-
+		if (s_Data.QuadIndexCount >= Renderer2DData::MaxIndices)
+		{
+			StartNewBatch();
+		}
 		constexpr glm::vec4 color = { 1.0f, 1.0f, 1.0f, 1.0f };
 
 		float textureIndex = 0.0f;
@@ -266,6 +287,8 @@ namespace SE
 
 		s_Data.QuadIndexCount += 6;
 
+		s_Data.Stats.QuadCount++;
+
 #if NOBATCH
 		s_Data.TextureShader->SetFloat4("u_Color", glm::vec4(1.0f));
 
@@ -278,5 +301,13 @@ namespace SE
 		s_Data.QuadVertexArray->Bind();
 		RenderCommand::DrawIndexed(s_Data.QuadVertexArray);
 #endif
+	}
+	void Renderer2D::ResetStats()
+	{
+		memset(&s_Data.Stats, 0, sizeof(Statistics));
+	}
+	Renderer2D::Statistics Renderer2D::GetStats()
+	{
+		return s_Data.Stats;
 	}
 }
