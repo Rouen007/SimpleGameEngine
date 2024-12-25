@@ -59,6 +59,15 @@ void SandBox2D::OnAttach()
 	SE_PROFILE_FUNCTION();
 
 	m_QiyaTexture = SE::Texture2D::Create("assets/textures/qiya4.png");
+
+	// Init here
+	m_Particle.ColorBegin = { 254 / 255.0f, 212 / 255.0f, 123 / 255.0f, 1.0f };
+	m_Particle.ColorEnd = { 254 / 255.0f, 109 / 255.0f, 41 / 255.0f, 1.0f };
+	m_Particle.SizeBegin = 0.5f, m_Particle.SizeVariation = 0.3f, m_Particle.SizeEnd = 0.0f;
+	m_Particle.LifeTime = 3.0f;
+	m_Particle.Velocity = { 0.0f, 0.0f };
+	m_Particle.VelocityVariation = { 3.0f, 1.0f };
+	m_Particle.Position = { 0.0f, 0.0f };
 	
 }
 void SandBox2D::OnDetach() 
@@ -96,7 +105,7 @@ void SandBox2D::OnUpdate(SE::Timestep ts)
 		SE::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.2f, 0.3f, 0.8f, 1.0f });
 
 		SE::Renderer2D::DrawQuad({ 0.2f, 0.5f, -0.1f }, { 1.8f, 3.2f }, m_QiyaTexture);
-		SE::Renderer2D::DrawQuad({ 0.5f, -0.5f, 0.0f }, { 0.9f, 1.6f }, m_QiyaTexture, 20.f, rotation);
+		SE::Renderer2D::DrawQuad({ 0.5f, -0.5f, 0.0f }, { 0.9f, 1.6f }, m_QiyaTexture, 20.f, glm::radians(rotation));
 
 		// SE::Renderer::Submit(m_FlatColorShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
@@ -110,12 +119,28 @@ void SandBox2D::OnUpdate(SE::Timestep ts)
 			{
 				glm::vec4 rb = { (x + 5.0f) / 10.f, 0.4f, (y + 5.0f) / 10.f, 1.0f };
 				SE::Renderer2D::DrawQuad({ x, y }, { 0.45f, 0.45f }, rb);
-
 			}
-
 		}
 		SE::Renderer2D::EndScene();
 	}
+
+	if (SE::Input::IsMouseButtonPressed(SE_MOUSE_BUTTON_LEFT))
+	{
+		auto [x, y] = SE::Input::GetMousePosition();
+		auto width = SE::Application::Get().GetWindow().GetWidth();
+		auto height = SE::Application::Get().GetWindow().GetHeight();
+
+		auto bounds = m_CameraController.GetBounds();
+		auto pos = m_CameraController.GetCamera().GetPosition();
+		x = (x / width) * bounds.GetWidth() - bounds.GetWidth() * 0.5f;
+		y = bounds.GetHeight() * 0.5f - (y / height) * bounds.GetHeight();
+		m_Particle.Position = { x + pos.x, y + pos.y };
+		for (int i = 0; i < 5; i++)
+			m_ParticleSystem.Emit(m_Particle);
+	}
+
+	m_ParticleSystem.OnUpdate(ts);
+	m_ParticleSystem.OnRender(m_CameraController.GetCamera());
 
 }
 
